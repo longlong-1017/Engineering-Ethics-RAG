@@ -1,0 +1,34 @@
+[
+  {
+    "path": "src/text_utils.py",
+    "change": "modified"
+  },
+  {
+    "path": "src/retriever.py",
+    "change": "modified"
+  },
+  {
+    "path": "src/evidence.py",
+    "change": "added"
+  },
+  {
+    "path": "src/qa.py",
+    "change": "modified"
+  },
+  {
+    "path": "tests/test_qa.py",
+    "change": "modified"
+  },
+  {
+    "path": "tests/test_phase3_evidence.py",
+    "change": "added"
+  },
+  {
+    "path": "scripts/phase3_score.py",
+    "change": "added"
+  },
+  {
+    "path": "README.md",
+    "change": "modified"
+  }
+]

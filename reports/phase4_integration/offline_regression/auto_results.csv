@@ -1,0 +1,61 @@
+﻿id,type,mode,status,gold_in_pool,gold_ranks,retrieval_hit_top1,retrieval_hit_topk,gold_fact_coverage,answer_fact_coverage,cited_fact_coverage,cited_ranks,cited_keys,gold_risks,warnings
+Q01,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p17""]","[""strict""]",[]
+Q01,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p17""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q02,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p18""]","[""strict""]",[]
+Q02,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p18""]","[""strict""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q03,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf#p8""]","[""strict""]",[]
+Q03,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf#p8""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q04,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""03工程伦理第四讲工程中的价值、利益与公正(ver1.1).pdf#p17""]","[""strict""]",[]
+Q04,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""03工程伦理第四讲工程中的价值、利益与公正(ver1.1).pdf#p17""]","[""strict""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q05,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""09工程伦理第十讲环境工程伦理(ver1.1) .pdf#p34""]","[""strict""]",[]
+Q05,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""09工程伦理第十讲环境工程伦理(ver1.1) .pdf#p34""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q06,概念,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p19""]","[""strict""]",[]
+Q06,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p19""]","[""strict""]",[]
+Q07,概念,strict,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""00工程伦理第一讲绪论(ver1.1).pdf#p23"", ""00工程伦理第一讲绪论(ver1.1).pdf#p24""]","[""strict""]",[]
+Q07,概念,expanded,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""00工程伦理第一讲绪论(ver1.1).pdf#p23"", ""00工程伦理第一讲绪论(ver1.1).pdf#p24""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q08,概念,strict,insufficient,False,[],False,False,1.0,0.2,0.0,[],[],"[""unreviewed""]",[]
+Q08,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf#p18""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q09,概念,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q09,概念,expanded,ok,True,"[1, 2, 3]",True,True,1.0,1.0,1.0,"[1, 2, 3]","[""04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf#p21"", ""04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf#p22"", ""04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf#p23""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q10,概念,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q10,概念,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p19""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q11,简答,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""05工程伦理第六讲工程师的职业伦理(ver1.1).pdf#p68""]","[""strict""]",[]
+Q11,简答,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""05工程伦理第六讲工程师的职业伦理(ver1.1).pdf#p68""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q12,简答,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p20""]","[""strict""]",[]
+Q12,简答,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p20""]","[""strict""]",[]
+Q13,简答,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p24""]","[""strict""]",[]
+Q13,简答,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""00工程伦理第一讲绪论(ver1.1).pdf#p24""]","[""strict""]",[]
+Q14,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""reviewed_hold"", ""unreviewed""]",[]
+Q14,简答,expanded,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf#p14"", ""02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf#p17""]","[""reviewed_hold"", ""unreviewed""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q15,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q15,简答,expanded,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p26"", ""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p27""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q16,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q16,简答,expanded,ok,True,"[1, 2, 3]",True,True,1.0,1.0,1.0,"[1, 2, 3]","[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p27"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p28"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p29""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q17,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q17,简答,expanded,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p45"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p46""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q18,简答,strict,insufficient,False,[],False,False,1.0,0.25,0.0,[],[],"[""reviewed_hold"", ""unreviewed""]",[]
+Q18,简答,expanded,ok,True,"[1, 2, 4]",True,True,1.0,1.0,1.0,"[1, 2]","[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p69"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p70""]","[""reviewed_hold"", ""unreviewed""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q19,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q19,简答,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p57""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q20,简答,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q20,简答,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p59""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q21,案例,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""01工程伦理第二讲工程伦理概念(ver1.1).pdf#p7""]","[""strict""]",[]
+Q21,案例,expanded,ok,True,[3],False,True,1.0,1.0,1.0,[3],"[""01工程伦理第二讲工程伦理概念(ver1.1).pdf#p7""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q22,案例,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""05工程伦理第六讲工程师的职业伦理(ver1.1).pdf#p5""]","[""strict""]",[]
+Q22,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""05工程伦理第六讲工程师的职业伦理(ver1.1).pdf#p5""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q23,案例,strict,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""06工程伦理第七讲土木工程伦理(ver1.1) .pdf#p4"", ""06工程伦理第七讲土木工程伦理(ver1.1) .pdf#p5""]","[""strict""]",[]
+Q23,案例,expanded,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""06工程伦理第七讲土木工程伦理(ver1.1) .pdf#p4"", ""06工程伦理第七讲土木工程伦理(ver1.1) .pdf#p5""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q24,案例,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p15""]","[""strict""]",[]
+Q24,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p15""]","[""strict""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q25,案例,strict,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""09工程伦理第十讲环境工程伦理(ver1.1) .pdf#p8""]","[""strict""]",[]
+Q25,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""09工程伦理第十讲环境工程伦理(ver1.1) .pdf#p8""]","[""strict""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q26,案例,strict,insufficient,False,[],False,False,1.0,0.25,0.0,[],[],"[""unreviewed""]",[]
+Q26,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""09工程伦理第十讲环境工程伦理(ver1.1) .pdf#p13""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q27,案例,strict,ok,True,"[1, 2]",True,True,1.0,1.0,1.0,"[1, 2]","[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p5"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p4""]","[""strict""]",[]
+Q27,案例,expanded,ok,True,"[1, 3]",True,True,1.0,1.0,1.0,"[1, 3]","[""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p5"", ""10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf#p4""]","[""strict""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q28,案例,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""reviewed_hold""]",[]
+Q28,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p16""]","[""reviewed_hold""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q29,案例,strict,insufficient,False,[],False,False,0.6667,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q29,案例,expanded,ok,True,[1],True,True,0.6667,0.6667,0.6667,[1],"[""07工程伦理第七讲化学工程伦理(ver1.1) .pdf#p30""]","[""unreviewed""]","[""检索结果包含未审核页面；检索结果包含已审核但未通过严格标准的页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"
+Q30,案例,strict,insufficient,False,[],False,False,1.0,0.0,0.0,[],[],"[""unreviewed""]",[]
+Q30,案例,expanded,ok,True,[1],True,True,1.0,1.0,1.0,[1],"[""06工程伦理第七讲土木工程伦理(ver1.1) .pdf#p62""]","[""unreviewed""]","[""检索结果包含未审核页面，以下内容不能视为已核实结论，请对照原文页码复核。""]"

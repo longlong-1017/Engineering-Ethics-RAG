@@ -1,0 +1,86 @@
+[
+  {
+    "path": "src/citations.py",
+    "status": "added"
+  },
+  {
+    "path": "src/qa.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/app.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/config.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/api_limits.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/cli.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/deepseek_client.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/evidence.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/test_citation_validation.py",
+    "status": "added"
+  },
+  {
+    "path": "tests/test_phase4_app.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/test_api_diagnostics.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/run_api_diagnostics.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/test_app.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/test_real_corpus.py",
+    "status": "modified"
+  },
+  {
+    "path": "README.md",
+    "status": "modified"
+  },
+  {
+    "path": ".env.example",
+    "status": "modified"
+  },
+  {
+    "path": "reports/phase4_integration/phase4_report.md",
+    "status": "modified"
+  },
+  {
+    "path": "reports/phase4_integration/首次真实联调指南.md",
+    "status": "modified"
+  },
+  {
+    "path": "reports/phase5_integration/phase5_report.md",
+    "status": "added"
+  },
+  {
+    "path": "reports/phase5_integration/citation_guide_fix.md",
+    "status": "added"
+  },
+  {
+    "path": "reports/phase5_integration/citation_connective_fix.md",
+    "status": "added"
+  }
+]

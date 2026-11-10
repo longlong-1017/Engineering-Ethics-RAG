@@ -1,0 +1,107 @@
+{
+  "phase5_start": "2026-11-08T19:04:52+08:00",
+  "protected_files": 20,
+  "checks": [
+    {
+      "path": "data/pdfs/00工程伦理第一讲绪论(ver1.1).pdf",
+      "sha256": "0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb",
+      "size": 3560774
+    },
+    {
+      "path": "data/pdfs/01工程伦理第二讲工程伦理概念(ver1.1).pdf",
+      "sha256": "13a4292eb210348f2f418a5ff8228926f2906947c7039524e970a2d980b8b9ea",
+      "size": 4272657
+    },
+    {
+      "path": "data/pdfs/02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+      "sha256": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325",
+      "size": 1115356
+    },
+    {
+      "path": "data/pdfs/03工程伦理第四讲工程中的价值、利益与公正(ver1.1).pdf",
+      "sha256": "cc1afe1801b078739ac05a8be197163b17a645cadc23d487c40dc28b72bdd4a9",
+      "size": 1699034
+    },
+    {
+      "path": "data/pdfs/04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf",
+      "sha256": "823685706f501383ce13897a6ce32e02ffd79948732d23f5fb3681aca09007dd",
+      "size": 352945
+    },
+    {
+      "path": "data/pdfs/05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+      "sha256": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3",
+      "size": 730441
+    },
+    {
+      "path": "data/pdfs/06工程伦理第七讲土木工程伦理(ver1.1) .pdf",
+      "sha256": "cc50e14591abcabbd9279fed41c3816c0ad9b5dd77fd01c6f2fc740bd9672e03",
+      "size": 1436442
+    },
+    {
+      "path": "data/pdfs/07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+      "sha256": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918",
+      "size": 1531821
+    },
+    {
+      "path": "data/pdfs/09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+      "sha256": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf",
+      "size": 1176015
+    },
+    {
+      "path": "data/pdfs/10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf",
+      "sha256": "71c1ea1f8852747751ac37359a42e0263a0c61c7fba1b42e8f3e1073c425b66c",
+      "size": 1236114
+    },
+    {
+      "path": "data/processed_v3/00工程伦理第一讲绪论(ver1.1)_0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb.json",
+      "sha256": "466321931a75449e917538b7a31dbfa66738a7061f7e414162664a43c1a2e883",
+      "size": 153615
+    },
+    {
+      "path": "data/processed_v3/01工程伦理第二讲工程伦理概念(ver1.1)_13a4292eb210348f2f418a5ff8228926f2906947c7039524e970a2d980b8b9ea.json",
+      "sha256": "b9548a268a4d61019cbc3a519538412ba404fce292387bae58667cca74677da4",
+      "size": 64360
+    },
+    {
+      "path": "data/processed_v3/02工程伦理第三讲工程中的风险、责任与安全(ver1.1)_f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325.json",
+      "sha256": "bd7263d4120b8c3d4e0fb28beaf8c528c7567f96394bb69c56b5431616b8da62",
+      "size": 41993
+    },
+    {
+      "path": "data/processed_v3/03工程伦理第四讲工程中的价值、利益与公正(ver1.1)_cc1afe1801b078739ac05a8be197163b17a645cadc23d487c40dc28b72bdd4a9.json",
+      "sha256": "df696669f0781e6a8576e054dd9e73639d7d942995fcc6190b47e58ddb914fcb",
+      "size": 46433
+    },
+    {
+      "path": "data/processed_v3/04工程伦理第五讲工程活动中的环境伦理(ver1.1)_823685706f501383ce13897a6ce32e02ffd79948732d23f5fb3681aca09007dd.json",
+      "sha256": "5ab4a46a9483a8b4ec7522cb78a4d71527ec0cc622357e4dd4b9e0bd275c01b6",
+      "size": 25931
+    },
+    {
+      "path": "data/processed_v3/05工程伦理第六讲工程师的职业伦理(ver1.1)_09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3.json",
+      "sha256": "7e6e264e515a6776798ff47d66cabb9dc917aa5fe26914f046423d6a184f8919",
+      "size": 80749
+    },
+    {
+      "path": "data/processed_v3/06工程伦理第七讲土木工程伦理(ver1.1) _cc50e14591abcabbd9279fed41c3816c0ad9b5dd77fd01c6f2fc740bd9672e03.json",
+      "sha256": "dea8e01182e3126b1fa233bb4bede82aa596b9aba02c3d19196bbfd3d38bc654",
+      "size": 55193
+    },
+    {
+      "path": "data/processed_v3/07工程伦理第七讲化学工程伦理(ver1.1) _42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918.json",
+      "sha256": "2518f4013817a5e8a14a1ebbe81090df4f3e9c4128cb5a25a1625578c41c5a4c",
+      "size": 46065
+    },
+    {
+      "path": "data/processed_v3/09工程伦理第十讲环境工程伦理(ver1.1) _e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf.json",
+      "sha256": "fb04360d07a3c500694182bafd01ae1cb4f528154e56586673945f576aaa1190",
+      "size": 39054
+    },
+    {
+      "path": "data/processed_v3/10工程伦理生物医药第十讲工程伦理(ver1.1) _71c1ea1f8852747751ac37359a42e0263a0c61c7fba1b42e8f3e1073c425b66c.json",
+      "sha256": "4e10a7a2eb02fcf37eb56f238c96c8868de4877454f0d22241d08c521a0c6415",
+      "size": 63713
+    }
+  ],
+  "all_mtime_before_phase5_start": true
+}

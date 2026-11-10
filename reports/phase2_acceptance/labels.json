@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "labels": [
+    {
+      "id": "Q01",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p17 严格页直接定义，答案完整。"
+    },
+    {
+      "id": "Q02",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p18 严格页直接定义，答案完整。"
+    },
+    {
+      "id": "Q03",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p8 严格页列出三项技术因素。"
+    },
+    {
+      "id": "Q04",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p17 严格页说明要素集成与多重价值。"
+    },
+    {
+      "id": "Q05",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p34 严格页回答公平分配及社会断裂；未引用癌症村例子，不影响核心。"
+    },
+    {
+      "id": "Q06",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p19 严格页列出五项目的。"
+    },
+    {
+      "id": "Q07",
+      "mode": "strict",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p23 排名第 1，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q08",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "严格池无金标页，正确返回资料不足。"
+    },
+    {
+      "id": "Q09",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，却用 00/04 课件的目录/章节页拼出答案；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q10",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，却用生物医药目录和无关页作答；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q11",
+      "mode": "strict",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p68 排名第 1，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q12",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p20 严格页三点完整。"
+    },
+    {
+      "id": "Q13",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p24 严格页列出五种方法。"
+    },
+    {
+      "id": "Q14",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案把技术因素、目录页当作人为因素；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q15",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案只引用 00-p57 目录标题；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q16",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案拼入课程介绍、目录等无关内容；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q17",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案只有生物医药目录；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q18",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案讲工程伦理教育而非制药企业社会责任；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q19",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案给的是利益冲突五种回避方式，未回答“为什么调查专家要回避”；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q20",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "严格池无金标页，正确返回资料不足。"
+    },
+    {
+      "id": "Q21",
+      "mode": "strict",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p7 排名第 1，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q22",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p5 严格页含时间、三聚氰胺、召回、肾结石等核心事实。"
+    },
+    {
+      "id": "Q23",
+      "mode": "strict",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p4/p5 排名 1/2，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q24",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p15 金标排名第 1 且含 62/136/7.5 亿元，但答案只摘到事件名和标题，未回答数字。"
+    },
+    {
+      "id": "Q25",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p8 严格页含缓建决定及发布人。"
+    },
+    {
+      "id": "Q26",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "只引用严格 p12 的座谈会日期，未回答“结果”；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q27",
+      "mode": "strict",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "retrieval_failure",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p4/p5 在严格池，但未进入 Top-6；答案也未命中。"
+    },
+    {
+      "id": "Q28",
+      "mode": "strict",
+      "answer_verdict": "incorrect",
+      "failure_type": "insufficient_evidence",
+      "evidence_verdict": "unsupported",
+      "manual_review": false,
+      "notes": "严格池无金标页，答案错误地回答青岛事故；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。"
+    },
+    {
+      "id": "Q29",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "严格池无金标页，正确返回资料不足。"
+    },
+    {
+      "id": "Q30",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "严格池无金标页，正确返回资料不足。"
+    },
+    {
+      "id": "Q01",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": true,
+      "notes": "核心证据 p17 严格页；另引用 05-p28 未审核页作补充，建议复核该补充。"
+    },
+    {
+      "id": "Q02",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": true,
+      "notes": "核心证据 p18 严格页；另引用 00-p5 与 10-p24 未审核页。"
+    },
+    {
+      "id": "Q03",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": true,
+      "notes": "核心证据 p8 严格页；另引用 02-p14、07-p27 未审核页。"
+    },
+    {
+      "id": "Q04",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p17 严格页完整；警告提到未审核页但实际引用均为严格页。"
+    },
+    {
+      "id": "Q05",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p34 严格页回答公平分配及社会断裂；未引用癌症村例子。"
+    },
+    {
+      "id": "Q06",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p19 严格页列出五项目的；另引 p16-18 严格页补充。"
+    },
+    {
+      "id": "Q07",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p23 排名第 1，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q08",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": true,
+      "notes": "金标 p18 未审核页排名第 1 且含完整答案，但被“是什么”误判为定义题而拒答；应带风险提示作答。"
+    },
+    {
+      "id": "Q09",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p21 未审核页列出四原则，答案正确；证据待人工复核。"
+    },
+    {
+      "id": "Q10",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p19 未审核页三层含义完整；证据待人工复核。"
+    },
+    {
+      "id": "Q11",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p68 排名第 1，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q12",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p20 严格页三点完整。"
+    },
+    {
+      "id": "Q13",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p24 严格页五种方法完整。"
+    },
+    {
+      "id": "Q14",
+      "mode": "expanded",
+      "answer_verdict": "partial_pending_manual",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "命中 p14/p17 并包含设计、施工、操作意识，但混入 07-p27 化工特定内因，且未明确“工程设计理念”标题；证据待复核。"
+    },
+    {
+      "id": "Q15",
+      "mode": "expanded",
+      "answer_verdict": "incorrect_pending_manual",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "unsupported",
+      "manual_review": true,
+      "notes": "命中 p26/p27，但答案只摘到标题和引入句，未列出内因/外因；证据待复核。"
+    },
+    {
+      "id": "Q16",
+      "mode": "expanded",
+      "answer_verdict": "partial_pending_manual",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "覆盖误解/歧视、商业化负担、规范措施，但未明确基因隐私泄露及就学就业婚姻歧视；证据待复核。"
+    },
+    {
+      "id": "Q17",
+      "mode": "expanded",
+      "answer_verdict": "partial_pending_manual",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "只摘到宏观标题、尽可能多人受益、微观“谁作决定”，漏掉资源有效使用、政策限制、适应证、生命质量、分配方式；证据待复核。"
+    },
+    {
+      "id": "Q18",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p69(C)/p70/p71 支持商业利润与社会利益、质量安全、负面信息公开、利益冲突；C 类页待复核。"
+    },
+    {
+      "id": "Q19",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p57 未审核页直接回答原因；证据待复核。"
+    },
+    {
+      "id": "Q20",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p59 未审核页回答重要性；证据待复核。"
+    },
+    {
+      "id": "Q21",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p7 排名第 2，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q22",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p5 严格页核心事实完整。"
+    },
+    {
+      "id": "Q23",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p4/p5 排名 1/2，但被“是什么”误判为定义题而拒答。"
+    },
+    {
+      "id": "Q24",
+      "mode": "expanded",
+      "answer_verdict": "incorrect",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p15 金标排名第 1 且含数字，但答案只摘到事件名，未回答伤亡和损失。"
+    },
+    {
+      "id": "Q25",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "evidence_verdict": "supported_strict",
+      "manual_review": false,
+      "notes": "p8 严格页完整。"
+    },
+    {
+      "id": "Q26",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p13 未审核页给出座谈会结果，p14 补充第二场；证据待复核。"
+    },
+    {
+      "id": "Q27",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": false,
+      "notes": "金标 p5 排名第 1，但关键词覆盖率被判不足而拒答；p4/p5 实际有用途和畸形后果。"
+    },
+    {
+      "id": "Q28",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p16 E 类页给出 173/800/6866 亿元，p45 未审核页补充消防员死亡；金额疑点，必须人工复核。"
+    },
+    {
+      "id": "Q29",
+      "mode": "expanded",
+      "answer_verdict": "insufficient_wrong",
+      "failure_type": "qa_logic_error",
+      "evidence_verdict": "none",
+      "manual_review": true,
+      "notes": "金标 p30 未审核页排名第 1 且含动机，但被“是什么”误判为定义题而拒答；应带风险提示作答。"
+    },
+    {
+      "id": "Q30",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "evidence_verdict": "supported_risk",
+      "manual_review": true,
+      "notes": "p62 未审核页直接给出直接原因和根本原因；证据待复核。"
+    }
+  ]
+}

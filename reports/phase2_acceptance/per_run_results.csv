@@ -1,0 +1,61 @@
+﻿id,type,question,mode,status,should_answer,gold_in_pool,gold_ranks,retrieval_hit_topk,retrieval_hit_top1,answer_verdict,evidence_verdict,failure_type,manual_review,false_insufficient,false_sufficient,answer_fact_coverage,citation_count,manual_review_effective,b_order_review,notes
+Q01,概念,工程伦理规范是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,p17 严格页直接定义，答案完整。
+Q01,概念,工程伦理规范是什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,True,False,False,1.0,2,True,True,核心证据 p17 严格页；另引用 05-p28 未审核页作补充，建议复核该补充。
+Q02,概念,工程伦理的决策能力指什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,2,True,True,p18 严格页直接定义，答案完整。
+Q02,概念,工程伦理的决策能力指什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,True,False,False,1.0,3,True,True,核心证据 p18 严格页；另引用 00-p5 与 10-p24 未审核页。
+Q03,概念,工程风险的技术因素包括哪些？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,3,True,True,p8 严格页列出三项技术因素。
+Q03,概念,工程风险的技术因素包括哪些？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,True,False,False,1.0,3,True,False,核心证据 p8 严格页；另引用 02-p14、07-p27 未审核页。
+Q04,概念,工程价值为什么具有综合性？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,p17 严格页说明要素集成与多重价值。
+Q04,概念,工程价值为什么具有综合性？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,p17 严格页完整；警告提到未审核页但实际引用均为严格页。
+Q05,概念,环境工程中的社会公正应做到什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,0.6667,1,False,False,p34 严格页回答公平分配及社会断裂；未引用癌症村例子，不影响核心。
+Q05,概念,环境工程中的社会公正应做到什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,0.6667,1,False,False,p34 严格页回答公平分配及社会断裂；未引用癌症村例子。
+Q06,概念,工程伦理教育的目的包括哪些？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,5,True,True,p19 严格页列出五项目的。
+Q06,概念,工程伦理教育的目的包括哪些？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,5,True,True,p19 严格页列出五项目的；另引 p16-18 严格页补充。
+Q07,概念,工程伦理学的两种理解思路是什么？,strict,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p23 排名第 1，但被“是什么”误判为定义题而拒答。
+Q07,概念,工程伦理学的两种理解思路是什么？,expanded,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p23 排名第 1，但被“是什么”误判为定义题而拒答。
+Q08,概念,工程风险的可接受性是什么？应如何控制？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.2,0,False,False,严格池无金标页，正确返回资料不足。
+Q08,概念,工程风险的可接受性是什么？应如何控制？,expanded,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,True,True,False,0.2,0,True,False,金标 p18 未审核页排名第 1 且含完整答案，但被“是什么”误判为定义题而拒答；应带风险提示作答。
+Q09,概念,现代工程活动中的环境伦理原则包括哪些？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,5,True,True,严格池无金标页，却用 00/04 课件的目录/章节页拼出答案；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q09,概念,现代工程活动中的环境伦理原则包括哪些？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,0.8,4,True,False,p21 未审核页列出四原则，答案正确；证据待人工复核。
+Q10,概念,生物医药工程伦理中的“公正公开”包括哪三层含义？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,5,True,True,严格池无金标页，却用生物医药目录和无关页作答；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q10,概念,生物医药工程伦理中的“公正公开”包括哪三层含义？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,p19 未审核页三层含义完整；证据待人工复核。
+Q11,简答,工程师回避利益冲突的五种方式是什么？,strict,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p68 排名第 1，但被“是什么”误判为定义题而拒答。
+Q11,简答,工程师回避利益冲突的五种方式是什么？,expanded,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p68 排名第 1，但被“是什么”误判为定义题而拒答。
+Q12,简答,工程伦理教育有哪些意义？,strict,ok,True,True,[2],True,False,correct,supported_strict,none,False,False,False,1.0,2,True,True,p20 严格页三点完整。
+Q12,简答,工程伦理教育有哪些意义？,expanded,ok,True,True,[2],True,False,correct,supported_strict,none,False,False,False,1.0,1,True,True,p20 严格页三点完整。
+Q13,简答,工程伦理学的研究方法有哪五种？,strict,ok,True,True,[2],True,False,correct,supported_strict,none,False,False,False,1.0,2,True,True,p24 严格页列出五种方法。
+Q13,简答,工程伦理学的研究方法有哪五种？,expanded,ok,True,True,[2],True,False,correct,supported_strict,none,False,False,False,1.0,2,True,True,p24 严格页五种方法完整。
+Q14,简答,工程风险的人为因素包括哪些？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,4,True,True,严格池无金标页，答案把技术因素、目录页当作人为因素；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q14,简答,工程风险的人为因素包括哪些？,expanded,ok,True,True,"[2, 3]",True,False,partial_pending_manual,supported_risk,qa_logic_error,True,False,False,0.75,3,True,False,命中 p14/p17 并包含设计、施工、操作意识，但混入 07-p27 化工特定内因，且未明确“工程设计理念”标题；证据待复核。
+Q15,简答,化工安全事故的人为因素有哪些？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,1,True,True,严格池无金标页，答案只引用 00-p57 目录标题；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q15,简答,化工安全事故的人为因素有哪些？,expanded,ok,True,True,"[2, 5]",True,False,incorrect_pending_manual,unsupported,qa_logic_error,True,False,False,0.0,2,True,False,命中 p26/p27，但答案只摘到标题和引入句，未列出内因/外因；证据待复核。
+Q16,简答,基因检测中的伦理问题有哪些？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,5,True,True,严格池无金标页，答案拼入课程介绍、目录等无关内容；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q16,简答,基因检测中的伦理问题有哪些？,expanded,ok,True,True,"[1, 2, 3]",True,True,partial_pending_manual,supported_risk,qa_logic_error,True,False,False,0.75,3,True,False,覆盖误解/歧视、商业化负担、规范措施，但未明确基因隐私泄露及就学就业婚姻歧视；证据待复核。
+Q17,简答,器官移植中稀缺器官的公正分配问题包括哪些？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,2,True,True,严格池无金标页，答案只有生物医药目录；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q17,简答,器官移植中稀缺器官的公正分配问题包括哪些？,expanded,ok,True,True,"[1, 2]",True,True,partial_pending_manual,supported_risk,qa_logic_error,True,False,False,0.2,3,True,False,只摘到宏观标题、尽可能多人受益、微观“谁作决定”，漏掉资源有效使用、政策限制、适应证、生命质量、分配方式；证据待复核。
+Q18,简答,制药企业应承担哪些社会责任？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.25,4,True,True,严格池无金标页，答案讲工程伦理教育而非制药企业社会责任；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q18,简答,制药企业应承担哪些社会责任？,expanded,ok,True,True,"[1, 2, 4]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,4,True,False,p69(C)/p70/p71 支持商业利润与社会利益、质量安全、负面信息公开、利益冲突；C 类页待复核。
+Q19,简答,事故调查专家为什么要回避利益冲突？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,1,False,False,严格池无金标页，答案给的是利益冲突五种回避方式，未回答“为什么调查专家要回避”；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q19,简答,事故调查专家为什么要回避利益冲突？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,p57 未审核页直接回答原因；证据待复核。
+Q20,简答,环境信息公开为什么重要？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,严格池无金标页，正确返回资料不足。
+Q20,简答,环境信息公开为什么重要？,expanded,ok,True,True,[2],True,False,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,p59 未审核页回答重要性；证据待复核。
+Q21,案例,挑战者号事故的时间、地点和后果是什么？,strict,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p7 排名第 1，但被“是什么”误判为定义题而拒答。
+Q21,案例,挑战者号事故的时间、地点和后果是什么？,expanded,insufficient,True,True,[2],True,False,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p7 排名第 2，但被“是什么”误判为定义题而拒答。
+Q22,案例,三鹿奶粉事件的时间、污染物和健康影响是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,0.8,1,False,False,p5 严格页含时间、三聚氰胺、召回、肾结石等核心事实。
+Q22,案例,三鹿奶粉事件的时间、污染物和健康影响是什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,0.8,1,False,False,p5 严格页核心事实完整。
+Q23,案例,沱江大桥坍塌的时间、地点和桥梁设计参数是什么？,strict,insufficient,True,True,"[1, 2]",True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p4/p5 排名 1/2，但被“是什么”误判为定义题而拒答。
+Q23,案例,沱江大桥坍塌的时间、地点和桥梁设计参数是什么？,expanded,insufficient,True,True,"[1, 2]",True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p4/p5 排名 1/2，但被“是什么”误判为定义题而拒答。
+Q24,案例,青岛输油管道事故的伤亡和直接经济损失是多少？,strict,ok,True,True,[1],True,True,incorrect,supported_strict,qa_logic_error,False,False,False,0.25,1,False,False,p15 金标排名第 1 且含 62/136/7.5 亿元，但答案只摘到事件名和标题，未回答数字。
+Q24,案例,青岛输油管道事故的伤亡和直接经济损失是多少？,expanded,ok,True,True,[1],True,True,incorrect,supported_strict,qa_logic_error,False,False,False,0.25,1,False,False,p15 金标排名第 1 且含数字，但答案只摘到事件名，未回答伤亡和损失。
+Q25,案例,厦门PX项目事件中，2007年5月30日厦门市政府作出了什么决定？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,p8 严格页含缓建决定及发布人。
+Q25,案例,厦门PX项目事件中，2007年5月30日厦门市政府作出了什么决定？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,p8 严格页完整。
+Q26,案例,厦门PX项目公众参与座谈会的结果如何？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.25,1,False,False,只引用严格 p12 的座谈会日期，未回答“结果”；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q26,案例,厦门PX项目公众参与座谈会的结果如何？,expanded,ok,True,True,[2],True,False,correct_pending_manual,supported_risk,none,True,False,False,1.0,3,True,False,p13 未审核页给出座谈会结果，p14 补充第二场；证据待复核。
+Q27,案例,反应停的用途和造成的畸形后果是什么？,strict,insufficient,True,True,[],False,False,insufficient_wrong,none,retrieval_failure,False,True,False,0.0,0,False,False,金标 p4/p5 在严格池，但未进入 Top-6；答案也未命中。
+Q27,案例,反应停的用途和造成的畸形后果是什么？,expanded,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,False,True,False,0.0,0,False,False,金标 p5 排名第 1，但关键词覆盖率被判不足而拒答；p4/p5 实际有用途和畸形后果。
+Q28,案例,天津港爆炸事故的伤亡和直接经济损失是多少？,strict,ok,False,False,[],False,False,incorrect,unsupported,insufficient_evidence,False,False,True,0.0,1,False,False,严格池无金标页，答案错误地回答青岛事故；应资料不足。 归因：严格池内无该题金标正文，系统未执行“资料不足”规则。
+Q28,案例,天津港爆炸事故的伤亡和直接经济损失是多少？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,2,True,False,p16 E 类页给出 173/800/6866 亿元，p45 未审核页补充消防员死亡；金额疑点，必须人工复核。
+Q29,案例,吉化双苯厂爆炸事故中，操作工违反操作规程的动机是什么？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,严格池无金标页，正确返回资料不足。
+Q29,案例,吉化双苯厂爆炸事故中，操作工违反操作规程的动机是什么？,expanded,insufficient,True,True,[1],True,True,insufficient_wrong,none,qa_logic_error,True,True,False,0.0,0,True,False,金标 p30 未审核页排名第 1 且含动机，但被“是什么”误判为定义题而拒答；应带风险提示作答。
+Q30,案例,重庆綦江彩虹桥坍塌的直接原因和根本原因是什么？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,严格池无金标页，正确返回资料不足。
+Q30,案例,重庆綦江彩虹桥坍塌的直接原因和根本原因是什么？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,p62 未审核页直接给出直接原因和根本原因；证据待复核。

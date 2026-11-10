@@ -1,0 +1,61 @@
+﻿id,type,question,mode,status,should_answer,gold_in_pool,gold_ranks,retrieval_hit_topk,retrieval_hit_top1,answer_verdict,evidence_verdict,failure_type,manual_review,false_insufficient,false_sufficient,answer_fact_coverage,citation_count,manual_review_effective,b_order_review,notes
+Q01,概念,工程伦理规范是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,直接定义包含行为准则、价值道德观及解决问题依据。
+Q01,概念,工程伦理规范是什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,直接定义包含行为准则、价值道德观及解决问题依据。
+Q02,概念,工程伦理的决策能力指什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,直接定义包含伦理困境、仅靠规范的不足及理性决策能力。
+Q02,概念,工程伦理的决策能力指什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,直接定义包含伦理困境、仅靠规范的不足及理性决策能力。
+Q03,概念,工程风险的技术因素包括哪些？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,三项技术因素及解释完整，未混入人为因素。
+Q03,概念,工程风险的技术因素包括哪些？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,三项技术因素及解释完整，未混入人为因素。
+Q04,概念,工程价值为什么具有综合性？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,综合要素和多重价值完整。
+Q04,概念,工程价值为什么具有综合性？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,综合要素和多重价值完整。
+Q05,概念,环境工程中的社会公正应做到什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,公平分配、社会断裂和癌症村例子完整。
+Q05,概念,环境工程中的社会公正应做到什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,公平分配、社会断裂和癌症村例子完整。
+Q06,概念,工程伦理教育的目的包括哪些？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,p19五项目的完整，清单正文完整保留，未附带意识背景页。
+Q06,概念,工程伦理教育的目的包括哪些？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,p19五项目的完整，清单正文完整保留，未附带意识背景页。
+Q07,概念,工程伦理学的两种理解思路是什么？,strict,ok,True,True,"[1, 2]",True,True,correct,supported_strict,none,False,False,False,1.0,2,True,True,p23一是与p24二是跨页完整，未再按定义题拒答。p24同时含方法论背景。
+Q07,概念,工程伦理学的两种理解思路是什么？,expanded,ok,True,True,"[1, 2]",True,True,correct,supported_strict,none,False,False,False,1.0,2,True,True,p23一是与p24二是跨页完整，未再按定义题拒答。p24同时含方法论背景。
+Q08,概念,工程风险的可接受性是什么？应如何控制？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.2,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q08,概念,工程风险的可接受性是什么？应如何控制？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,不可能为零、可接受范围及三项控制措施完整。
+Q09,概念,现代工程活动中的环境伦理原则包括哪些？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q09,概念,现代工程活动中的环境伦理原则包括哪些？,expanded,ok,True,True,"[1, 2, 3]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,3,True,False,p21列举四原则、p22/p23解释完整，排除了另一套原则排序背景p24。
+Q10,概念,生物医药工程伦理中的“公正公开”包括哪三层含义？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q10,概念,生物医药工程伦理中的“公正公开”包括哪三层含义？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,程序、回报、分配公正三层及解释完整。
+Q11,简答,工程师回避利益冲突的五种方式是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,五种方式及限定解释完整；p67只作同节背景，按原引用阈值不支持。
+Q11,简答,工程师回避利益冲突的五种方式是什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,p68五种方式及其限定解释完整，不再附带未审核的概括背景页p67。
+Q12,简答,工程伦理教育有哪些意义？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,伦理素养责任、可持续发展、群体利益和谐三点完整。
+Q12,简答,工程伦理教育有哪些意义？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,伦理素养责任、可持续发展、群体利益和谐三点完整。
+Q13,简答,工程伦理学的研究方法有哪五种？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,五种方法完整，排除了另一套“两种研究方法”页。
+Q13,简答,工程伦理学的研究方法有哪五种？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,True,True,五种方法完整，排除了另一套“两种研究方法”页。
+Q14,简答,工程风险的人为因素包括哪些？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q14,简答,工程风险的人为因素包括哪些？,expanded,ok,True,True,"[1, 2]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,2,True,False,设计理念、相关因素、施工质量、操作风险意识均在；p17仍有源文本乱码，不能算源资料已核实。
+Q15,简答,化工安全事故的人为因素有哪些？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q15,简答,化工安全事故的人为因素有哪些？,expanded,ok,True,True,"[1, 2]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,2,True,False,50%～90%范围、内因、外因完整。
+Q16,简答,基因检测中的伦理问题有哪些？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q16,简答,基因检测中的伦理问题有哪些？,expanded,ok,True,True,"[1, 2, 3]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,3,True,False,误用歧视、商业负担、隐私及规范措施跨三页完整。
+Q17,简答,器官移植中稀缺器官的公正分配问题包括哪些？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q17,简答,器官移植中稀缺器官的公正分配问题包括哪些？,expanded,ok,True,True,"[1, 2]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,2,True,False,宏观三项及微观适禁证、质量与分配方式完整。
+Q18,简答,制药企业应承担哪些社会责任？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.25,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q18,简答,制药企业应承担哪些社会责任？,expanded,ok,True,True,"[1, 2, 4]",True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,2,True,False,利润股东与其他社会利益、质量安全及负面公开均在；C页可能仍漏图片文字，待核。
+Q19,简答,事故调查专家为什么要回避利益冲突？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q19,简答,事故调查专家为什么要回避利益冲突？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,调查全面性系统性彻底性与公众信任长远利益直接依据完整。
+Q20,简答,环境信息公开为什么重要？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q20,简答,环境信息公开为什么重要？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,公众支持、理解项目、沉默与恐慌完整；源文字层“掩益/暖昧”未擅改。
+Q21,案例,挑战者号事故的时间、地点和后果是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,事故日期、地点、爆炸解体和七人殉职完整；未采用前一日背景页作结果。
+Q21,案例,挑战者号事故的时间、地点和后果是什么？,expanded,ok,True,True,[3],True,False,correct,supported_strict,none,False,False,False,1.0,1,False,False,事故日期、地点、爆炸解体和七人殉职完整；未采用前一日背景页作结果。
+Q22,案例,三鹿奶粉事件的时间、污染物和健康影响是什么？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,声明召回日期、污染物、健康影响和食品安全事件完整。
+Q22,案例,三鹿奶粉事件的时间、污染物和健康影响是什么？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,声明召回日期、污染物、健康影响和食品安全事件完整。
+Q23,案例,沱江大桥坍塌的时间、地点和桥梁设计参数是什么？,strict,ok,True,True,"[1, 2]",True,True,correct,supported_strict,none,False,False,False,1.0,2,True,True,p4时间地点与p5六项参数完整，小数及单位保留。
+Q23,案例,沱江大桥坍塌的时间、地点和桥梁设计参数是什么？,expanded,ok,True,True,"[1, 2]",True,True,correct,supported_strict,none,False,False,False,1.0,2,True,True,p4时间地点与p5六项参数完整，小数及单位保留。
+Q24,案例,青岛输油管道事故的伤亡和直接经济损失是多少？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,62/136人和7.5亿元完整，不再仅摘标题。
+Q24,案例,青岛输油管道事故的伤亡和直接经济损失是多少？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,62/136人和7.5亿元完整，不再仅摘标题。
+Q25,案例,厦门PX项目事件中，2007年5月30日厦门市政府作出了什么决定？,strict,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,指定日期的缓建决定及新闻发布会完整。
+Q25,案例,厦门PX项目事件中，2007年5月30日厦门市政府作出了什么决定？,expanded,ok,True,True,[1],True,True,correct,supported_strict,none,False,False,False,1.0,1,False,False,指定日期的缓建决定及新闻发布会完整。
+Q26,案例,厦门PX项目公众参与座谈会的结果如何？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.25,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q26,案例,厦门PX项目公众参与座谈会的结果如何？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,49名、超过40位反对、8位代表仅1人支持、四小时完整。
+Q27,案例,反应停的用途和造成的畸形后果是什么？,strict,ok,True,True,"[1, 2]",True,True,correct,supported_strict,none,False,False,False,1.0,2,False,False,p4用途和别名、p5年份及海豹肢后果完整，按物理页排序。
+Q27,案例,反应停的用途和造成的畸形后果是什么？,expanded,ok,True,True,"[1, 3]",True,True,correct,supported_strict,none,False,False,False,1.0,2,False,False,p4用途和别名、p5年份及海豹肢后果完整，按物理页排序。
+Q28,案例,天津港爆炸事故的伤亡和直接经济损失是多少？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q28,案例,天津港爆炸事故的伤亡和直接经济损失是多少？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,按原评分满足课件173/800/6866亿元；6866亿元疑点未经外部验证，绝不等同现实事实正确。
+Q29,案例,吉化双苯厂爆炸事故中，操作工违反操作规程的动机是什么？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q29,案例,吉化双苯厂爆炸事故中，操作工违反操作规程的动机是什么？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,0.6667,1,True,False,动机、绩效工资和私利公共利益完整；源文“尽快排除 的故障”导致原事实匹配仅2/3，逐文复核语义完整，不改金标或源文。
+Q30,案例,重庆綦江彩虹桥坍塌的直接原因和根本原因是什么？,strict,insufficient,False,False,[],False,False,insufficient_correct,none,none,False,False,False,0.0,0,False,False,当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。
+Q30,案例,重庆綦江彩虹桥坍塌的直接原因和根本原因是什么？,expanded,ok,True,True,[1],True,True,correct_pending_manual,supported_risk,none,True,False,False,1.0,1,True,False,技术直接原因与管理缺位根本原因完整。

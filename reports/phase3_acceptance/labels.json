@@ -1,0 +1,546 @@
+{
+  "schema_version": 1,
+  "reviewer": "Codex assistant：逐题对照源文字层复核；非人类教师签核，不是仅按覆盖率自动判分。",
+  "labels": [
+    {
+      "id": "Q01",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "直接定义包含行为准则、价值道德观及解决问题依据。"
+    },
+    {
+      "id": "Q01",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "直接定义包含行为准则、价值道德观及解决问题依据。"
+    },
+    {
+      "id": "Q02",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "直接定义包含伦理困境、仅靠规范的不足及理性决策能力。"
+    },
+    {
+      "id": "Q02",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "直接定义包含伦理困境、仅靠规范的不足及理性决策能力。"
+    },
+    {
+      "id": "Q03",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "三项技术因素及解释完整，未混入人为因素。"
+    },
+    {
+      "id": "Q03",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "三项技术因素及解释完整，未混入人为因素。"
+    },
+    {
+      "id": "Q04",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "综合要素和多重价值完整。"
+    },
+    {
+      "id": "Q04",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "综合要素和多重价值完整。"
+    },
+    {
+      "id": "Q05",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "公平分配、社会断裂和癌症村例子完整。"
+    },
+    {
+      "id": "Q05",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "公平分配、社会断裂和癌症村例子完整。"
+    },
+    {
+      "id": "Q06",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p19五项目的完整，清单正文完整保留，未附带意识背景页。"
+    },
+    {
+      "id": "Q06",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p19五项目的完整，清单正文完整保留，未附带意识背景页。"
+    },
+    {
+      "id": "Q07",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p23一是与p24二是跨页完整，未再按定义题拒答。p24同时含方法论背景。"
+    },
+    {
+      "id": "Q07",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p23一是与p24二是跨页完整，未再按定义题拒答。p24同时含方法论背景。"
+    },
+    {
+      "id": "Q08",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q08",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "不可能为零、可接受范围及三项控制措施完整。"
+    },
+    {
+      "id": "Q09",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q09",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "p21列举四原则、p22/p23解释完整，排除了另一套原则排序背景p24。"
+    },
+    {
+      "id": "Q10",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q10",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "程序、回报、分配公正三层及解释完整。"
+    },
+    {
+      "id": "Q11",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "五种方式及限定解释完整；p67只作同节背景，按原引用阈值不支持。"
+    },
+    {
+      "id": "Q11",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p68五种方式及其限定解释完整，不再附带未审核的概括背景页p67。"
+    },
+    {
+      "id": "Q12",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "伦理素养责任、可持续发展、群体利益和谐三点完整。"
+    },
+    {
+      "id": "Q12",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "伦理素养责任、可持续发展、群体利益和谐三点完整。"
+    },
+    {
+      "id": "Q13",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "五种方法完整，排除了另一套“两种研究方法”页。"
+    },
+    {
+      "id": "Q13",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "五种方法完整，排除了另一套“两种研究方法”页。"
+    },
+    {
+      "id": "Q14",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q14",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "设计理念、相关因素、施工质量、操作风险意识均在；p17仍有源文本乱码，不能算源资料已核实。"
+    },
+    {
+      "id": "Q15",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q15",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "50%～90%范围、内因、外因完整。"
+    },
+    {
+      "id": "Q16",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q16",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "误用歧视、商业负担、隐私及规范措施跨三页完整。"
+    },
+    {
+      "id": "Q17",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q17",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "宏观三项及微观适禁证、质量与分配方式完整。"
+    },
+    {
+      "id": "Q18",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q18",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "利润股东与其他社会利益、质量安全及负面公开均在；C页可能仍漏图片文字，待核。"
+    },
+    {
+      "id": "Q19",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q19",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "调查全面性系统性彻底性与公众信任长远利益直接依据完整。"
+    },
+    {
+      "id": "Q20",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q20",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "公众支持、理解项目、沉默与恐慌完整；源文字层“掩益/暖昧”未擅改。"
+    },
+    {
+      "id": "Q21",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "事故日期、地点、爆炸解体和七人殉职完整；未采用前一日背景页作结果。"
+    },
+    {
+      "id": "Q21",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "事故日期、地点、爆炸解体和七人殉职完整；未采用前一日背景页作结果。"
+    },
+    {
+      "id": "Q22",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "声明召回日期、污染物、健康影响和食品安全事件完整。"
+    },
+    {
+      "id": "Q22",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "声明召回日期、污染物、健康影响和食品安全事件完整。"
+    },
+    {
+      "id": "Q23",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p4时间地点与p5六项参数完整，小数及单位保留。"
+    },
+    {
+      "id": "Q23",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p4时间地点与p5六项参数完整，小数及单位保留。"
+    },
+    {
+      "id": "Q24",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "62/136人和7.5亿元完整，不再仅摘标题。"
+    },
+    {
+      "id": "Q24",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "62/136人和7.5亿元完整，不再仅摘标题。"
+    },
+    {
+      "id": "Q25",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "指定日期的缓建决定及新闻发布会完整。"
+    },
+    {
+      "id": "Q25",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "指定日期的缓建决定及新闻发布会完整。"
+    },
+    {
+      "id": "Q26",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q26",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "49名、超过40位反对、8位代表仅1人支持、四小时完整。"
+    },
+    {
+      "id": "Q27",
+      "mode": "strict",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p4用途和别名、p5年份及海豹肢后果完整，按物理页排序。"
+    },
+    {
+      "id": "Q27",
+      "mode": "expanded",
+      "answer_verdict": "correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "supported_strict",
+      "notes": "p4用途和别名、p5年份及海豹肢后果完整，按物理页排序。"
+    },
+    {
+      "id": "Q28",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q28",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "按原评分满足课件173/800/6866亿元；6866亿元疑点未经外部验证，绝不等同现实事实正确。"
+    },
+    {
+      "id": "Q29",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q29",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "动机、绩效工资和私利公共利益完整；源文“尽快排除 的故障”导致原事实匹配仅2/3，逐文复核语义完整，不改金标或源文。"
+    },
+    {
+      "id": "Q30",
+      "mode": "strict",
+      "answer_verdict": "insufficient_correct",
+      "failure_type": "none",
+      "manual_review": false,
+      "evidence_verdict": "none",
+      "notes": "当前严格池无支持所问关系的金标正文；拒绝用目录、一般论述或相似事故替代。"
+    },
+    {
+      "id": "Q30",
+      "mode": "expanded",
+      "answer_verdict": "correct_pending_manual",
+      "failure_type": "none",
+      "manual_review": true,
+      "evidence_verdict": "supported_risk",
+      "notes": "技术直接原因与管理缺位根本原因完整。"
+    }
+  ]
+}

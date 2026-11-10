@@ -1,0 +1,56 @@
+# Python 虚拟环境与缓存
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.pytest_tmp/
+
+# 本地配置
+.env
+.env.*
+!.env.example
+*.env
+.streamlit/secrets.toml
+*.pem
+*.key
+.DS_Store
+
+# 生成数据
+/data/processed/
+/data/processed_v2/
+/data/processed_v3/
+/data/pdfs/
+/data/ocr_candidates/
+/data/runtime/
+
+# 页面预览和本地诊断产物（报告正文仍可版本控制）
+/reports/pdf_quality/
+/reports/pdf_repair/
+/reports/high_risk_review/
+/reports/phase3_work/
+*.log
+
+# 后续生成的向量数据库
+/data/vector_db/
+/data/vector_store/
+/vector_db/
+/vector_store/
+chroma/
+.chroma/
+chroma_db/
+chroma.sqlite3*
+qdrant_storage/
+*.faiss
+*.index
+*.lance/
+
+# 修改前的人工备份
+/backups/
+
+# 编辑器与本地编译缓存
+.idea/
+.build/
+
+# 本地模型与检索向量缓存
+/models/
+/data/retrieval_cache/

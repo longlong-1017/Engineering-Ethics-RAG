@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "description": "Engineering-Ethics-RAG 第二阶段验收题库：30 题，概念/简答/案例各 10 题。gold_pages 仅列回答该题所依据的原文页；context_pages 为辅助定位页。",
+  "questions": [
+    {
+      "id": "Q01",
+      "type": "概念",
+      "question": "工程伦理规范是什么？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 17, "role": "answer"}
+      ],
+      "expected_points": [
+        ["行为准则", "遵循的行为准则"],
+        ["价值观和道德观", "价值观", "道德观"],
+        ["提供依据", "解决伦理问题提供依据"]
+      ],
+      "notes": "B 类已修复页；严格合格。"
+    },
+    {
+      "id": "Q02",
+      "type": "概念",
+      "question": "工程伦理的决策能力指什么？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 18, "role": "answer"}
+      ],
+      "expected_points": [
+        ["伦理困境", "面对伦理困境"],
+        ["仅依靠工程伦理规范很难作出判断", "规范很难作出判断"],
+        ["更复杂的理性决策能力", "理性决策能力"]
+      ],
+      "notes": "B 类已修复页；严格合格。"
+    },
+    {
+      "id": "Q03",
+      "type": "概念",
+      "question": "工程风险的技术因素包括哪些？",
+      "gold_pages": [
+        {"filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf", "page_number": 8, "role": "answer"}
+      ],
+      "expected_points": [
+        ["零部件老化", "功能失调"],
+        ["控制系统失灵"],
+        ["非线性作用"]
+      ],
+      "notes": "A 类页；p8 与 p9 在源课件中重复。"
+    },
+    {
+      "id": "Q04",
+      "type": "概念",
+      "question": "工程价值为什么具有综合性？",
+      "gold_pages": [
+        {"filename": "03工程伦理第四讲工程中的价值、利益与公正(ver1.1).pdf", "page_number": 17, "role": "answer"}
+      ],
+      "expected_points": [
+        ["科学技术", "经济", "管理", "社会", "伦理", "生态"],
+        ["多重价值", "主导价值"]
+      ],
+      "notes": "A 类页。"
+    },
+    {
+      "id": "Q05",
+      "type": "概念",
+      "question": "环境工程中的社会公正应做到什么？",
+      "gold_pages": [
+        {"filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf", "page_number": 34, "role": "answer"}
+      ],
+      "expected_points": [
+        ["公平分配社会资源", "公平分配"],
+        ["社会断裂"],
+        ["癌症村", "环境分配不公"]
+      ],
+      "notes": "A 类页。"
+    },
+    {
+      "id": "Q06",
+      "type": "概念",
+      "question": "工程伦理教育的目的包括哪些？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 19, "role": "answer"}
+      ],
+      "expected_points": [
+        ["培养工程伦理意识"],
+        ["发现工程伦理问题"],
+        ["利用工程伦理准则"],
+        ["走出工程伦理困境"],
+        ["解决工程伦理问题"]
+      ],
+      "notes": "B 类已修复页；p16-p18 分别解释意识、规范、决策能力，但本题的五项目的以 p19 为准。"
+    },
+    {
+      "id": "Q07",
+      "type": "概念",
+      "question": "工程伦理学的两种理解思路是什么？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 23, "role": "answer"},
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 24, "role": "answer"}
+      ],
+      "expected_points": [
+        ["科学和技术", "还原论"],
+        ["职业和职业活动", "其他职业伦理"],
+        ["相对独立的社会实践行为", "工程职业"]
+      ],
+      "notes": "B 类已修复页；严格合格。"
+    },
+    {
+      "id": "Q08",
+      "type": "概念",
+      "question": "工程风险的可接受性是什么？应如何控制？",
+      "gold_pages": [
+        {"filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf", "page_number": 18, "role": "answer"}
+      ],
+      "expected_points": [
+        ["风险不可能为0", "风险不可能为零"],
+        ["可接受范围", "可接受性"],
+        ["分析风险可接受性"],
+        ["界定安全等级"],
+        ["预警机制", "应急预案"]
+      ],
+      "notes": "未审核页；扩展模式可用，但需标记待人工复核。"
+    },
+    {
+      "id": "Q09",
+      "type": "概念",
+      "question": "现代工程活动中的环境伦理原则包括哪些？",
+      "gold_pages": [
+        {"filename": "04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf", "page_number": 21, "role": "answer"},
+        {"filename": "04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf", "page_number": 22, "role": "answer"},
+        {"filename": "04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf", "page_number": 23, "role": "answer"}
+      ],
+      "expected_points": [
+        ["尊重原则"],
+        ["整体性原则"],
+        ["不损害原则"],
+        ["补偿原则"],
+        ["尊重自然", "环境利益与人类利益相协调", "恢复自然环境"]
+      ],
+      "notes": "04 课件只有 p3 是严格页且仅是章节标题；四原则在未审核页 p21-p23。"
+    },
+    {
+      "id": "Q10",
+      "type": "概念",
+      "question": "生物医药工程伦理中的“公正公开”包括哪三层含义？",
+      "gold_pages": [
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 19, "role": "answer"}
+      ],
+      "expected_points": [
+        ["程序公正"],
+        ["回报公正"],
+        ["分配公正"],
+        ["科学合理的程序", "经济补偿", "风险与受益", "风险-受益"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q11",
+      "type": "简答",
+      "question": "工程师回避利益冲突的五种方式是什么？",
+      "gold_pages": [
+        {"filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf", "page_number": 68, "role": "answer"}
+      ],
+      "expected_points": [
+        ["拒绝"],
+        ["放弃"],
+        ["离职"],
+        ["不参与"],
+        ["披露"]
+      ],
+      "notes": "A 类页；严格合格。"
+    },
+    {
+      "id": "Q12",
+      "type": "简答",
+      "question": "工程伦理教育有哪些意义？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 20, "role": "answer"}
+      ],
+      "expected_points": [
+        ["伦理素养", "社会责任"],
+        ["可持续发展", "人与自然"],
+        ["协调社会各群体之间的利益关系", "社会稳定和谐"]
+      ],
+      "notes": "B 类已修复页；严格合格。"
+    },
+    {
+      "id": "Q13",
+      "type": "简答",
+      "question": "工程伦理学的研究方法有哪五种？",
+      "gold_pages": [
+        {"filename": "00工程伦理第一讲绪论(ver1.1).pdf", "page_number": 24, "role": "answer"}
+      ],
+      "expected_points": [
+        ["哲学"],
+        ["决疑"],
+        ["技术"],
+        ["社会"],
+        ["职业"]
+      ],
+      "notes": "B 类已修复页；严格合格。"
+    },
+    {
+      "id": "Q14",
+      "type": "简答",
+      "question": "工程风险的人为因素包括哪些？",
+      "gold_pages": [
+        {"filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf", "page_number": 14, "role": "answer"},
+        {"filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf", "page_number": 17, "role": "answer"}
+      ],
+      "expected_points": [
+        ["工程设计理念"],
+        ["政治", "经济", "文化", "社会", "环境", "地理", "技术"],
+        ["施工质量", "产品质量", "工程质量"],
+        ["操作人员的风险意识", "安全意识教育", "安全第一"]
+      ],
+      "notes": "p14 未审核；p17 为 B 类 reviewed_hold（结构未修复），两页均非严格合格。"
+    },
+    {
+      "id": "Q15",
+      "type": "简答",
+      "question": "化工安全事故的人为因素有哪些？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 26, "role": "answer"},
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 27, "role": "answer"}
+      ],
+      "expected_points": [
+        ["50%", "90%", "人的失误"],
+        ["技术熟练程度", "情绪控制力", "精力集中度", "风险偏好", "职业伦理敏感度"],
+        ["卫生环境", "操作培训", "应急演练", "操作规程"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q16",
+      "type": "简答",
+      "question": "基因检测中的伦理问题有哪些？",
+      "gold_pages": [
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 27, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 28, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 29, "role": "answer"}
+      ],
+      "expected_points": [
+        ["误解", "误用", "基因歧视"],
+        ["商业化", "心理和经济负担", "身心负担"],
+        ["基因隐私泄露", "就学", "就业", "婚姻"],
+        ["技术标准", "准入门槛", "隐私保护"]
+      ],
+      "notes": "三页均未审核；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q17",
+      "type": "简答",
+      "question": "器官移植中稀缺器官的公正分配问题包括哪些？",
+      "gold_pages": [
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 45, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 46, "role": "answer"}
+      ],
+      "expected_points": [
+        ["有限的资源如何有效使用", "有效使用"],
+        ["尽可能多的人受益"],
+        ["政策", "限制器官移植"],
+        ["适应证", "禁忌证"],
+        ["生命质量", "先来后到", "支付能力", "抽签", "社会贡献"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q18",
+      "type": "简答",
+      "question": "制药企业应承担哪些社会责任？",
+      "gold_pages": [
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 69, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 70, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 71, "role": "answer"}
+      ],
+      "expected_points": [
+        ["商业利润", "股东利益"],
+        ["其他社会利益", "社会责任"],
+        ["药品质量安全", "保证药品质量"],
+        ["公开负面", "临床实验失败", "利益冲突"]
+      ],
+      "notes": "p69 为 C 类（图片文字未提取/内容不完整）；p70-p71 未审核。需标记待人工复核。"
+    },
+    {
+      "id": "Q19",
+      "type": "简答",
+      "question": "事故调查专家为什么要回避利益冲突？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 57, "role": "answer"}
+      ],
+      "expected_points": [
+        ["公众对事故调查专家的信任", "出卖公众"],
+        ["全面性", "系统性", "彻底性"],
+        ["公众的长远利益", "长远利益"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q20",
+      "type": "简答",
+      "question": "环境信息公开为什么重要？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 59, "role": "answer"}
+      ],
+      "expected_points": [
+        ["公众的支持和认可", "取得公众支持"],
+        ["理解化工行业", "工程项目运作"],
+        ["掩盖真相", "沉默", "恐慌的催化剂"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q21",
+      "type": "案例",
+      "question": "挑战者号事故的时间、地点和后果是什么？",
+      "gold_pages": [
+        {"filename": "01工程伦理第二讲工程伦理概念(ver1.1).pdf", "page_number": 7, "role": "answer"}
+      ],
+      "expected_points": [
+        ["1986年1月28日"],
+        ["佛罗里达", "肯尼迪航天中心"],
+        ["爆炸解体"],
+        ["7名宇航员", "殉职"]
+      ],
+      "notes": "A 类页；严格合格。"
+    },
+    {
+      "id": "Q22",
+      "type": "案例",
+      "question": "三鹿奶粉事件的时间、污染物和健康影响是什么？",
+      "gold_pages": [
+        {"filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf", "page_number": 5, "role": "answer"}
+      ],
+      "expected_points": [
+        ["2008年9月11日"],
+        ["三聚氰胺"],
+        ["2008年8月6日", "召回"],
+        ["肾结石", "肾功能不全"],
+        ["食品安全事件"]
+      ],
+      "notes": "A 类页；严格合格。"
+    },
+    {
+      "id": "Q23",
+      "type": "案例",
+      "question": "沱江大桥坍塌的时间、地点和桥梁设计参数是什么？",
+      "gold_pages": [
+        {"filename": "06工程伦理第七讲土木工程伦理(ver1.1) .pdf", "page_number": 4, "role": "answer"},
+        {"filename": "06工程伦理第七讲土木工程伦理(ver1.1) .pdf", "page_number": 5, "role": "answer"}
+      ],
+      "expected_points": [
+        ["2007年8月13日", "16时45"],
+        ["湖南省凤凰县", "贵州铜仁", "堤溪段"],
+        ["328.45米"],
+        ["13m", "13米"],
+        ["4孔", "每孔65米"],
+        ["高42米", "桥墩高33m", "连拱石拱桥"]
+      ],
+      "notes": "p4 为 B 类已修复，p5 为 A 类；严格合格。"
+    },
+    {
+      "id": "Q24",
+      "type": "案例",
+      "question": "青岛输油管道事故的伤亡和直接经济损失是多少？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 15, "role": "answer"}
+      ],
+      "expected_points": [
+        ["2013年", "中石化青岛", "输油管道"],
+        ["62人", "62人死亡"],
+        ["136人", "136人受伤"],
+        ["7.5亿元"]
+      ],
+      "notes": "A 类页；严格合格。"
+    },
+    {
+      "id": "Q25",
+      "type": "案例",
+      "question": "厦门PX项目事件中，2007年5月30日厦门市政府作出了什么决定？",
+      "gold_pages": [
+        {"filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf", "page_number": 8, "role": "answer"}
+      ],
+      "expected_points": [
+        ["缓建", "缓建PX化工项目"],
+        ["丁国炎", "新闻发布会"]
+      ],
+      "notes": "A 类页；严格合格。"
+    },
+    {
+      "id": "Q26",
+      "type": "案例",
+      "question": "厦门PX项目公众参与座谈会的结果如何？",
+      "gold_pages": [
+        {"filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf", "page_number": 13, "role": "answer"}
+      ],
+      "context_pages": [
+        {"filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf", "page_number": 12, "role": "context"}
+      ],
+      "expected_points": [
+        ["49名", "49名市民代表"],
+        ["40位", "超过40位", "坚决反对"],
+        ["8位", "政协委员", "仅一人支持", "仅1人支持"],
+        ["四个小时", "4个小时", "座谈会"]
+      ],
+      "notes": "结果在未审核 p13；p12 仅为严格页且只说明座谈会日期，不能单独回答“结果”。"
+    },
+    {
+      "id": "Q27",
+      "type": "案例",
+      "question": "反应停的用途和造成的畸形后果是什么？",
+      "gold_pages": [
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 4, "role": "answer"},
+        {"filename": "10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf", "page_number": 5, "role": "answer"}
+      ],
+      "expected_points": [
+        ["沙利度胺"],
+        ["妊娠", "精神紧张", "恶心", "安眠"],
+        ["1957年", "处方药"],
+        ["短肢畸形", "海豹肢畸形"]
+      ],
+      "notes": "p4、p5 均为 A 类；严格合格。p7 另有 12000 多名婴儿的未审核补充。"
+    },
+    {
+      "id": "Q28",
+      "type": "案例",
+      "question": "天津港爆炸事故的伤亡和直接经济损失是多少？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 16, "role": "answer"}
+      ],
+      "expected_points": [
+        ["2015年8月"],
+        ["173人遇难", "173人"],
+        ["800多人伤", "800多人"],
+        ["6866亿元"]
+      ],
+      "notes": "E 类页：可见性/源资料存疑。p16 的“6866亿元”在既有审查报告中已被标为金额疑点，不能自动视为可靠；本题即使命中，证据也必须标待人工复核。"
+    },
+    {
+      "id": "Q29",
+      "type": "案例",
+      "question": "吉化双苯厂爆炸事故中，操作工违反操作规程的动机是什么？",
+      "gold_pages": [
+        {"filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf", "page_number": 30, "role": "answer"}
+      ],
+      "expected_points": [
+        ["尽快排除故障", "排除故障"],
+        ["非计划停车", "绩效考评", "工资收入"],
+        ["私利", "公共利益"]
+      ],
+      "notes": "未审核页；扩展模式可用，需标记待人工复核。"
+    },
+    {
+      "id": "Q30",
+      "type": "案例",
+      "question": "重庆綦江彩虹桥坍塌的直接原因和根本原因是什么？",
+      "gold_pages": [
+        {"filename": "06工程伦理第七讲土木工程伦理(ver1.1) .pdf", "page_number": 62, "role": "answer"}
+      ],
+      "context_pages": [
+        {"filename": "06工程伦理第七讲土木工程伦理(ver1.1) .pdf", "page_number": 60, "role": "context"}
+      ],
+      "expected_points": [
+        ["吊杆锁锚", "主拱钢管焊接", "钢管混凝土", "技术问题"],
+        ["管理缺位"]
+      ],
+      "notes": "原因在未审核 p62；p60 仅为严格页的章节标题，不能回答原因。"
+    }
+  ]
+}

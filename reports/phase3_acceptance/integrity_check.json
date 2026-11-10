@@ -1,0 +1,153 @@
+{
+  "protected_file_count": 36,
+  "all_unchanged": true,
+  "files": [
+    {
+      "path": "data/pdfs/03工程伦理第四讲工程中的价值、利益与公正(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/00工程伦理第一讲绪论(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/04工程伦理第五讲工程活动中的环境伦理(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/10工程伦理生物医药第十讲工程伦理(ver1.1) .pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/01工程伦理第二讲工程伦理概念(ver1.1).pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/pdfs/06工程伦理第七讲土木工程伦理(ver1.1) .pdf",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/01工程伦理第二讲工程伦理概念(ver1.1)_13a4292eb210348f2f418a5ff8228926f2906947c7039524e970a2d980b8b9ea.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/10工程伦理生物医药第十讲工程伦理(ver1.1) _71c1ea1f8852747751ac37359a42e0263a0c61c7fba1b42e8f3e1073c425b66c.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/09工程伦理第十讲环境工程伦理(ver1.1) _e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/07工程伦理第七讲化学工程伦理(ver1.1) _42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/03工程伦理第四讲工程中的价值、利益与公正(ver1.1)_cc1afe1801b078739ac05a8be197163b17a645cadc23d487c40dc28b72bdd4a9.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/06工程伦理第七讲土木工程伦理(ver1.1) _cc50e14591abcabbd9279fed41c3816c0ad9b5dd77fd01c6f2fc740bd9672e03.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/04工程伦理第五讲工程活动中的环境伦理(ver1.1)_823685706f501383ce13897a6ce32e02ffd79948732d23f5fb3681aca09007dd.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/00工程伦理第一讲绪论(ver1.1)_0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/02工程伦理第三讲工程中的风险、责任与安全(ver1.1)_f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325.json",
+      "unchanged": true
+    },
+    {
+      "path": "data/processed_v3/05工程伦理第六讲工程师的职业伦理(ver1.1)_09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/evidence_risk_register.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/metrics.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/labels.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/auto_results.csv",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/gold_page_validation.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/review_packet.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/failure_analysis.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/逐题引用核对表.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/questions.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/逐题结果表.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/README.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/citations.csv",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/gold_page_validation.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/raw_results.json",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/acceptance_report.md",
+      "unchanged": true
+    },
+    {
+      "path": "reports/phase2_acceptance/per_run_results.csv",
+      "unchanged": true
+    }
+  ],
+  "baseline_60_answers_reproduced_exactly": true,
+  "questions_byte_identical": true,
+  "backup": "/Users/along/Projects/Engineering-Ethics-RAG/backups/phase3_20261108-171406"
+}

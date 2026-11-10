@@ -1,0 +1,201 @@
+{
+  "synthetic": {
+    "legacy": [
+      0.75,
+      0.75,
+      0.8333333333333334
+    ],
+    "expanded_bm25_rrf": [
+      0.9722222222222222,
+      1.0,
+      0.8333333333333334
+    ],
+    "dense_rrf": null
+  },
+  "metric_order": [
+    "Recall@5",
+    "Recall@10",
+    "MRR"
+  ],
+  "labeled_questions": 9,
+  "unanswerable_questions": 1,
+  "dense_ready": false,
+  "real_courseware": {
+    "legacy": {
+      "pages": [
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 12
+        },
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 58
+        },
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 21
+        }
+      ],
+      "planned_evidence": [],
+      "diagnostics": {
+        "original_question": "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+        "subqueries": [
+          "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？"
+        ],
+        "bm25_hits": 3,
+        "dense_hits": 0,
+        "fused_candidates": 3,
+        "fallback": true,
+        "fallback_reason": "Dense未配置；使用本地BM25",
+        "selected_pages": [
+          {
+            "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:12",
+            "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+            "page_number": 12
+          },
+          {
+            "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:58",
+            "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+            "page_number": 58
+          },
+          {
+            "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:21",
+            "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+            "page_number": 21
+          }
+        ]
+      }
+    },
+    "hybrid": {
+      "pages": [
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 28
+        },
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 43
+        },
+        {
+          "file": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+          "physical_page": 31
+        },
+        {
+          "file": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+          "physical_page": 8
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 34
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 31
+        },
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 12
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 29
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 33
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 19
+        }
+      ],
+      "planned_evidence": [
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 28
+        },
+        {
+          "file": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+          "physical_page": 43
+        },
+        {
+          "file": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+          "physical_page": 31
+        },
+        {
+          "file": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+          "physical_page": 34
+        }
+      ],
+      "diagnostics": {
+        "original_question": "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+        "subqueries": [
+          "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+          "环境工程中的安全",
+          "公众安全与健康",
+          "工程师的伦理责任",
+          "工程风险",
+          "环境工程中的社会公正"
+        ],
+        "bm25_hits": 43,
+        "dense_hits": 0,
+        "fused_candidates": 43,
+        "fallback": true,
+        "fallback_reason": "Dense未配置；使用本地BM25",
+        "selected_pages": [
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 28
+          },
+          {
+            "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:43",
+            "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+            "page_number": 43
+          },
+          {
+            "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+            "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+            "page_number": 31
+          },
+          {
+            "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+            "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+            "page_number": 8
+          },
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 34
+          },
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:31",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 31
+          },
+          {
+            "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:12",
+            "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+            "page_number": 12
+          },
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:29",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 29
+          },
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:33",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 33
+          },
+          {
+            "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:19",
+            "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+            "page_number": 19
+          }
+        ],
+        "insufficient_reason": ""
+      }
+    }
+  }
+}

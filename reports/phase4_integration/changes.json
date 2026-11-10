@@ -1,0 +1,66 @@
+[
+  {
+    "path": "src/config.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/deepseek_client.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/cli.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/api_limits.py",
+    "status": "added"
+  },
+  {
+    "path": "src/app.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/evidence.py",
+    "status": "modified"
+  },
+  {
+    "path": "src/qa.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/conftest.py",
+    "status": "added"
+  },
+  {
+    "path": "tests/test_deepseek_client.py",
+    "status": "modified"
+  },
+  {
+    "path": "tests/test_phase4_api.py",
+    "status": "added"
+  },
+  {
+    "path": "tests/test_phase4_app.py",
+    "status": "added"
+  },
+  {
+    "path": "scripts/phase4_review_checklist.py",
+    "status": "added"
+  },
+  {
+    "path": "scripts/phase4_mock_check.py",
+    "status": "added"
+  },
+  {
+    "path": "README.md",
+    "status": "modified"
+  },
+  {
+    "path": ".env.example",
+    "status": "modified"
+  },
+  {
+    "path": ".gitignore",
+    "status": "modified"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "is_mock": true,
+  "real_http_requests": 0,
+  "mock_http_requests": 1,
+  "real_cost": 0,
+  "usage_note": "以下token数为Mock固定测试值，不是实际计费数据",
+  "status": "ok",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "answer": "2）控制系统失灵；现代工程：高度复杂、高度集成，但智能程度不高，存在引发事故的隐患。 [S1]",
+  "citations": [
+    {
+      "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+      "page_number": 8,
+      "quality": "A｜已审核：核心文字与顺序完整"
+    }
+  ],
+  "mock_usage": {
+    "prompt_tokens": 400,
+    "completion_tokens": 70,
+    "total_tokens": 470
+  },
+  "request_attempts_in_mock_ledger": 1
+}

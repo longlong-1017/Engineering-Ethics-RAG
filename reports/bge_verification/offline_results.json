@@ -1,0 +1,1305 @@
+{
+  "index": {
+    "state": "ready",
+    "model_id": "bge-small-zh-v1.5:9bbe5f6fa190e30a42a0367a64ca9771035929da8a8beb1417a8f0c88c21bd64",
+    "index_path": "/Users/along/Projects/Engineering-Ethics-RAG/data/retrieval_cache/vectors.sqlite3",
+    "dimension": 512,
+    "blocks": 590,
+    "cache_hits": 590,
+    "encoded_blocks": 0
+  },
+  "cache_second_load": {
+    "state": "ready",
+    "model_id": "bge-small-zh-v1.5:9bbe5f6fa190e30a42a0367a64ca9771035929da8a8beb1417a8f0c88c21bd64",
+    "index_path": "/Users/along/Projects/Engineering-Ethics-RAG/data/retrieval_cache/vectors.sqlite3",
+    "dimension": 512,
+    "blocks": 590,
+    "cache_hits": 590,
+    "encoded_blocks": 0
+  },
+  "protected_unchanged": true,
+  "protected_files": 25,
+  "elapsed_seconds": 3.2,
+  "results": [
+    {
+      "question": "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+      "results": {
+        "BM25扩展+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25_expansion+rrf",
+            "dense_enabled": false,
+            "vector_index": {
+              "state": "unavailable"
+            },
+            "original_question": "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+            "subqueries": [
+              "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+              "环境工程中的安全",
+              "公众安全与健康",
+              "工程师的伦理责任",
+              "工程风险",
+              "环境工程中的社会公正"
+            ],
+            "bm25_hits": 43,
+            "dense_hits": 0,
+            "fused_candidates": 43,
+            "fallback": true,
+            "fallback_reason": "Dense未配置；使用本地BM25",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 28
+              },
+              {
+                "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:43",
+                "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+                "page_number": 43
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 31
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 34
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 28,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 28 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "score": 0.0323,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 14.6825,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 1、环境工程中的安全 环境工程中的安全主要指环境工程中的生产安全、 公共安全以及环境生态安全。 环境工程中的生产安全主要是指生产过程中出现的 问题可能对环境和公众带来影响和危害。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:43",
+              "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+              "page_number": 43,
+              "citation": "《07工程伦理第七讲化学工程伦理(ver1.1) .pdf》第 43 页",
+              "location": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf 第 43 页",
+              "filename_with_page": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf 第 43 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 10.0255,
+              "coverage": 1.0,
+              "matched_terms": [
+                "公众",
+                "安全",
+                "健康"
+              ],
+              "phrase_match": false,
+              "snippet": "为什么危险品仓库或工厂1km范围 内有居民生活？为何不顾公众的安全与 健康，让工程通过了安全评价？",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 31,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 31 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "score": 0.0159,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 7.1719,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "伦理",
+                "责任"
+              ],
+              "phrase_match": true,
+              "snippet": "2.4 工程风险中的伦理责任 2.4.1 伦理责任 伦理责任也不等同于职业责任。 职业责任是工程师履行本职工作时应尽的岗位(角色)责任 ，而伦理责任是为了社会和公众利益需要承担的维护公平和正 义等伦理原则的责任。 工程师的伦理责任一般说来大于或重于职业责任。如果工 程师所在的企业作出了违背伦理的决策，损害了社会和公众的 利益，简单恪守职业责任会导致同流合污，而尽到伦理责任才 能够切实保护社会和公众的利益。职业责任和伦理责任在大多 数情况下是一致的，但在某些情况下则会发生冲突，这就需要 工程师在职业责任和伦理责任之问进行权衡。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 4,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 5,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 34,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 34 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "score": 0.0323,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 15.708,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 2、环境工程中的社会公正 环境公正应做到公平分配社会 资源。环境分配的不公正会造成一 定程度的社会断裂，生活在同一社 会的不同社群没有共同的未来。 癌症村这个案例就是环境分配 不公的经典案例。",
+              "duplicate_count": 0,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "环境公正、公平分配及癌症村案例正文完整；配图为相同主题的辅助照片。"
+            }
+          ]
+        },
+        "BM25+BGE+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25+bge+rrf",
+            "dense_enabled": true,
+            "vector_index": {
+              "state": "ready",
+              "model_id": "bge-small-zh-v1.5:9bbe5f6fa190e30a42a0367a64ca9771035929da8a8beb1417a8f0c88c21bd64",
+              "index_path": "/Users/along/Projects/Engineering-Ethics-RAG/data/retrieval_cache/vectors.sqlite3",
+              "dimension": 512,
+              "blocks": 590,
+              "cache_hits": 590,
+              "encoded_blocks": 0
+            },
+            "original_question": "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+            "subqueries": [
+              "某化工企业排放废水虽然满足现行标准，但可能长期影响周边居民健康。工程师应该如何进行伦理判断？",
+              "环境工程中的安全",
+              "公众安全与健康",
+              "工程师的伦理责任",
+              "工程风险",
+              "环境工程中的社会公正"
+            ],
+            "bm25_hits": 43,
+            "dense_hits": 47,
+            "fused_candidates": 70,
+            "fallback": false,
+            "fallback_reason": "",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 28
+              },
+              {
+                "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:43",
+                "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+                "page_number": 43
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 31
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 34
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 28,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 28 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "score": 0.0487,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7852575980346262,
+              "bm25_score": 14.6825,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 1、环境工程中的安全 环境工程中的安全主要指环境工程中的生产安全、 公共安全以及环境生态安全。 环境工程中的生产安全主要是指生产过程中出现的 问题可能对环境和公众带来影响和危害。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "42d3b37228df85119c424421a7114f1b77650510d72b8014ab63bc25785ed918:07工程伦理第七讲化学工程伦理(ver1.1) .pdf:43",
+              "filename": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf",
+              "page_number": 43,
+              "citation": "《07工程伦理第七讲化学工程伦理(ver1.1) .pdf》第 43 页",
+              "location": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf 第 43 页",
+              "filename_with_page": "07工程伦理第七讲化学工程伦理(ver1.1) .pdf 第 43 页",
+              "score": 0.032,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.593393471607246,
+              "bm25_score": 10.0255,
+              "coverage": 1.0,
+              "matched_terms": [
+                "公众",
+                "安全",
+                "健康"
+              ],
+              "phrase_match": false,
+              "snippet": "为什么危险品仓库或工厂1km范围 内有居民生活？为何不顾公众的安全与 健康，让工程通过了安全评价？",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 31,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 31 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "score": 0.032,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.838413372624808,
+              "bm25_score": 7.1719,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "伦理",
+                "责任"
+              ],
+              "phrase_match": true,
+              "snippet": "2.4 工程风险中的伦理责任 2.4.1 伦理责任 伦理责任也不等同于职业责任。 职业责任是工程师履行本职工作时应尽的岗位(角色)责任 ，而伦理责任是为了社会和公众利益需要承担的维护公平和正 义等伦理原则的责任。 工程师的伦理责任一般说来大于或重于职业责任。如果工 程师所在的企业作出了违背伦理的决策，损害了社会和公众的 利益，简单恪守职业责任会导致同流合污，而尽到伦理责任才 能够切实保护社会和公众的利益。职业责任和伦理责任在大多 数情况下是一致的，但在某些情况下则会发生冲突，这就需要 工程师在职业责任和伦理责任之问进行权衡。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 4,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0328,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7531091938226947,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 5,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 34,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 34 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "score": 0.0481,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7635340907572058,
+              "bm25_score": 15.708,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 2、环境工程中的社会公正 环境公正应做到公平分配社会 资源。环境分配的不公正会造成一 定程度的社会断裂，生活在同一社 会的不同社群没有共同的未来。 癌症村这个案例就是环境分配 不公的经典案例。",
+              "duplicate_count": 0,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "环境公正、公平分配及癌症村案例正文完整；配图为相同主题的辅助照片。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "question": "某工程项目能够带来显著经济收益，但可能对当地生态环境造成不可逆损害，应如何进行伦理决策？",
+      "results": {
+        "BM25扩展+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25_expansion+rrf",
+            "dense_enabled": false,
+            "vector_index": {
+              "state": "unavailable"
+            },
+            "original_question": "某工程项目能够带来显著经济收益，但可能对当地生态环境造成不可逆损害，应如何进行伦理决策？",
+            "subqueries": [
+              "某工程项目能够带来显著经济收益，但可能对当地生态环境造成不可逆损害，应如何进行伦理决策？",
+              "环境工程中的安全",
+              "工程风险",
+              "工程中的价值与利益",
+              "环境工程中的社会公正",
+              "工程师的伦理责任"
+            ],
+            "bm25_hits": 48,
+            "dense_hits": 0,
+            "fused_candidates": 48,
+            "fallback": true,
+            "fallback_reason": "Dense未配置；使用本地BM25",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:20",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 20
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 28
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb:00工程伦理第一讲绪论(ver1.1).pdf:5",
+                "filename": "00工程伦理第一讲绪论(ver1.1).pdf",
+                "page_number": 5
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 34
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:20",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 20,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 20 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 20 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 20 页",
+              "score": 0.0152,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 16.0427,
+              "coverage": 0.1876,
+              "matched_terms": [
+                "工程",
+                "经济",
+                "生态",
+                "环境",
+                "生态环境",
+                "伦理"
+              ],
+              "phrase_match": true,
+              "snippet": "9.2 环境工程伦理问题的产生 环境问题主要指由于人类经济和社会活动引起的环境 破坏，实质是经济发展与环境保护的冲突，是人与自然关 系的失调。 环境道德是调节人与人、人与社会之间关于生态环境 利益关系的规范，基本原则是生态整体利益和长远利益高 于一切，就是实现人和自然生态系统的可持续发展。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 28,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 28 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "score": 0.0323,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 14.6825,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 1、环境工程中的安全 环境工程中的安全主要指环境工程中的生产安全、 公共安全以及环境生态安全。 环境工程中的生产安全主要是指生产过程中出现的 问题可能对环境和公众带来影响和危害。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 4,
+              "evidence_id": "0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb:00工程伦理第一讲绪论(ver1.1).pdf:5",
+              "filename": "00工程伦理第一讲绪论(ver1.1).pdf",
+              "page_number": 5,
+              "citation": "《00工程伦理第一讲绪论(ver1.1).pdf》第 5 页",
+              "location": "00工程伦理第一讲绪论(ver1.1).pdf 第 5 页",
+              "filename_with_page": "00工程伦理第一讲绪论(ver1.1).pdf 第 5 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 5.4269,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "价值",
+                "利益"
+              ],
+              "phrase_match": false,
+              "snippet": "一、课程性质和地位 选修课。该课程旨在培养学生的工程伦理意识和责任感， 提高其工程伦理决策能力。通过课程教学使学生熟悉工程伦 理的基本概念，了解工程中的安全、责任、价值、利益，掌 握工程伦理的基本规范，初步了解不同职业伦理规范，并具 有对具体工程所涉及伦理问题的分析能力。对于提升学生伦 理素养、加强其社会责任、协调社会各群体之间的利益、促 进社会和谐发展具有重大的意义。",
+              "duplicate_count": 0,
+              "review_category": "B",
+              "repair_applied": true,
+              "review_label": "B｜已审核：阅读顺序已修复",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "课程性质与地位标题落后于正文，单栏文字可按显示坐标重排。"
+            },
+            {
+              "rank": 5,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 34,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 34 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "score": 0.0323,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 15.708,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 2、环境工程中的社会公正 环境公正应做到公平分配社会 资源。环境分配的不公正会造成一 定程度的社会断裂，生活在同一社 会的不同社群没有共同的未来。 癌症村这个案例就是环境分配 不公的经典案例。",
+              "duplicate_count": 0,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "环境公正、公平分配及癌症村案例正文完整；配图为相同主题的辅助照片。"
+            }
+          ]
+        },
+        "BM25+BGE+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25+bge+rrf",
+            "dense_enabled": true,
+            "vector_index": {
+              "state": "ready",
+              "model_id": "bge-small-zh-v1.5:9bbe5f6fa190e30a42a0367a64ca9771035929da8a8beb1417a8f0c88c21bd64",
+              "index_path": "/Users/along/Projects/Engineering-Ethics-RAG/data/retrieval_cache/vectors.sqlite3",
+              "dimension": 512,
+              "blocks": 590,
+              "cache_hits": 590,
+              "encoded_blocks": 0
+            },
+            "original_question": "某工程项目能够带来显著经济收益，但可能对当地生态环境造成不可逆损害，应如何进行伦理决策？",
+            "subqueries": [
+              "某工程项目能够带来显著经济收益，但可能对当地生态环境造成不可逆损害，应如何进行伦理决策？",
+              "环境工程中的安全",
+              "工程风险",
+              "工程中的价值与利益",
+              "环境工程中的社会公正",
+              "工程师的伦理责任"
+            ],
+            "bm25_hits": 48,
+            "dense_hits": 51,
+            "fused_candidates": 78,
+            "fallback": false,
+            "fallback_reason": "",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:20",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 20
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 28
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb:00工程伦理第一讲绪论(ver1.1).pdf:5",
+                "filename": "00工程伦理第一讲绪论(ver1.1).pdf",
+                "page_number": 5
+              },
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 34
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:20",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 20,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 20 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 20 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 20 页",
+              "score": 0.0294,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.6540881160720825,
+              "bm25_score": 16.0427,
+              "coverage": 0.1876,
+              "matched_terms": [
+                "工程",
+                "经济",
+                "生态",
+                "环境",
+                "生态环境",
+                "伦理"
+              ],
+              "phrase_match": true,
+              "snippet": "9.2 环境工程伦理问题的产生 环境问题主要指由于人类经济和社会活动引起的环境 破坏，实质是经济发展与环境保护的冲突，是人与自然关 系的失调。 环境道德是调节人与人、人与社会之间关于生态环境 利益关系的规范，基本原则是生态整体利益和长远利益高 于一切，就是实现人和自然生态系统的可持续发展。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:28",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 28,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 28 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 28 页",
+              "score": 0.0487,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7852575980346262,
+              "bm25_score": 14.6825,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 1、环境工程中的安全 环境工程中的安全主要指环境工程中的生产安全、 公共安全以及环境生态安全。 环境工程中的生产安全主要是指生产过程中出现的 问题可能对环境和公众带来影响和危害。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0328,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7531091938226947,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 4,
+              "evidence_id": "0a491c37060ef7f175463def3a6f3ff79406d018351df933930509a2f35965eb:00工程伦理第一讲绪论(ver1.1).pdf:5",
+              "filename": "00工程伦理第一讲绪论(ver1.1).pdf",
+              "page_number": 5,
+              "citation": "《00工程伦理第一讲绪论(ver1.1).pdf》第 5 页",
+              "location": "00工程伦理第一讲绪论(ver1.1).pdf 第 5 页",
+              "filename_with_page": "00工程伦理第一讲绪论(ver1.1).pdf 第 5 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 5.4269,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "价值",
+                "利益"
+              ],
+              "phrase_match": false,
+              "snippet": "一、课程性质和地位 选修课。该课程旨在培养学生的工程伦理意识和责任感， 提高其工程伦理决策能力。通过课程教学使学生熟悉工程伦 理的基本概念，了解工程中的安全、责任、价值、利益，掌 握工程伦理的基本规范，初步了解不同职业伦理规范，并具 有对具体工程所涉及伦理问题的分析能力。对于提升学生伦 理素养、加强其社会责任、协调社会各群体之间的利益、促 进社会和谐发展具有重大的意义。",
+              "duplicate_count": 0,
+              "review_category": "B",
+              "repair_applied": true,
+              "review_label": "B｜已审核：阅读顺序已修复",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "课程性质与地位标题落后于正文，单栏文字可按显示坐标重排。"
+            },
+            {
+              "rank": 5,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:34",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 34,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 34 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 34 页",
+              "score": 0.0481,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7635340907572058,
+              "bm25_score": 15.708,
+              "coverage": 1.0,
+              "matched_terms": [
+                "环境",
+                "工程",
+                "环境工程",
+                "社会",
+                "公正"
+              ],
+              "phrase_match": true,
+              "snippet": "9.3 环境工程中的安全与社会公正 2、环境工程中的社会公正 环境公正应做到公平分配社会 资源。环境分配的不公正会造成一 定程度的社会断裂，生活在同一社 会的不同社群没有共同的未来。 癌症村这个案例就是环境分配 不公的经典案例。",
+              "duplicate_count": 0,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "环境公正、公平分配及癌症村案例正文完整；配图为相同主题的辅助照片。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "question": "当工程师发现项目存在安全隐患，但管理层要求继续施工时，应如何处理？",
+      "results": {
+        "BM25扩展+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25_expansion+rrf",
+            "dense_enabled": false,
+            "vector_index": {
+              "state": "unavailable"
+            },
+            "original_question": "当工程师发现项目存在安全隐患，但管理层要求继续施工时，应如何处理？",
+            "subqueries": [
+              "当工程师发现项目存在安全隐患，但管理层要求继续施工时，应如何处理？",
+              "工程师的伦理责任",
+              "工程风险",
+              "工程师职业伦理规范"
+            ],
+            "bm25_hits": 39,
+            "dense_hits": 0,
+            "fused_candidates": 39,
+            "fallback": true,
+            "fallback_reason": "Dense未配置；使用本地BM25",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:42",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 42
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 31
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:50",
+                "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+                "page_number": 50
+              },
+              {
+                "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:40",
+                "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+                "page_number": 40
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:42",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 42,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 42 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 42 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 42 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 11.3146,
+              "coverage": 0.2309,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "项目",
+                "存在",
+                "处理"
+              ],
+              "phrase_match": false,
+              "snippet": "分析讨论 请大家详细了解“山东曹县垃圾发电项目环评事件”， 分析环境工程师应承担的责任并回答下列问题。 1.环境工作者在遭遇领导不合理指示时应如何协调处理？ 2.当环境工程评估不满足标准时但又要实施时，环境工作 者应如何处理？当满足标准时实施时但仍存在污染风险时， 环境工作者又应如何处理？",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 31,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 31 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "score": 0.0159,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 7.1719,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "伦理",
+                "责任"
+              ],
+              "phrase_match": true,
+              "snippet": "2.4 工程风险中的伦理责任 2.4.1 伦理责任 伦理责任也不等同于职业责任。 职业责任是工程师履行本职工作时应尽的岗位(角色)责任 ，而伦理责任是为了社会和公众利益需要承担的维护公平和正 义等伦理原则的责任。 工程师的伦理责任一般说来大于或重于职业责任。如果工 程师所在的企业作出了违背伦理的决策，损害了社会和公众的 利益，简单恪守职业责任会导致同流合污，而尽到伦理责任才 能够切实保护社会和公众的利益。职业责任和伦理责任在大多 数情况下是一致的，但在某些情况下则会发生冲突，这就需要 工程师在职业责任和伦理责任之问进行权衡。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 4,
+              "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:50",
+              "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+              "page_number": 50,
+              "citation": "《05工程伦理第六讲工程师的职业伦理(ver1.1).pdf》第 50 页",
+              "location": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 50 页",
+              "filename_with_page": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 50 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 10.7977,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "职业",
+                "伦理",
+                "规范"
+              ],
+              "phrase_match": true,
+              "snippet": "工程师应该对什么负责?向谁负责?谁负责任? 各工程社团的职业伦理章程对工程师的职业 伦理规范进行了比较详细的解释，包括：首要责 任原则、工程师的权利与责任、工程师的职业美 德、如何作正确的伦理决策。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 5,
+              "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:40",
+              "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+              "page_number": 40,
+              "citation": "《05工程伦理第六讲工程师的职业伦理(ver1.1).pdf》第 40 页",
+              "location": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 40 页",
+              "filename_with_page": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 40 页",
+              "score": 0.0302,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 9.4706,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "职业",
+                "伦理",
+                "规范"
+              ],
+              "phrase_match": true,
+              "snippet": "5.3.2 工程师职业伦理章程 其二，微观层面的责任要求作为职业伦理规范的一 部分，它体现为促进工程师的诚实责任，即“在处理 所有关系时，工程师应当以诚实和正直的最高标准为 指导”，引导工程师在实践中养成诚实正直的美德。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            }
+          ]
+        },
+        "BM25+BGE+RRF": {
+          "diagnostics": {
+            "active_mode": "bm25+bge+rrf",
+            "dense_enabled": true,
+            "vector_index": {
+              "state": "ready",
+              "model_id": "bge-small-zh-v1.5:9bbe5f6fa190e30a42a0367a64ca9771035929da8a8beb1417a8f0c88c21bd64",
+              "index_path": "/Users/along/Projects/Engineering-Ethics-RAG/data/retrieval_cache/vectors.sqlite3",
+              "dimension": 512,
+              "blocks": 590,
+              "cache_hits": 590,
+              "encoded_blocks": 0
+            },
+            "original_question": "当工程师发现项目存在安全隐患，但管理层要求继续施工时，应如何处理？",
+            "subqueries": [
+              "当工程师发现项目存在安全隐患，但管理层要求继续施工时，应如何处理？",
+              "工程师的伦理责任",
+              "工程风险",
+              "工程师职业伦理规范"
+            ],
+            "bm25_hits": 39,
+            "dense_hits": 36,
+            "fused_candidates": 59,
+            "fallback": false,
+            "fallback_reason": "",
+            "selected_pages": [
+              {
+                "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:42",
+                "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+                "page_number": 42
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 31
+              },
+              {
+                "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+                "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+                "page_number": 8
+              },
+              {
+                "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:50",
+                "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+                "page_number": 50
+              },
+              {
+                "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:40",
+                "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+                "page_number": 40
+              }
+            ],
+            "insufficient_reason": ""
+          },
+          "top5": [
+            {
+              "rank": 1,
+              "evidence_id": "e74dd975009f34e7499a39a2b6a393280034edf2271d94eadd54a50841021aaf:09工程伦理第十讲环境工程伦理(ver1.1) .pdf:42",
+              "filename": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf",
+              "page_number": 42,
+              "citation": "《09工程伦理第十讲环境工程伦理(ver1.1) .pdf》第 42 页",
+              "location": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 42 页",
+              "filename_with_page": "09工程伦理第十讲环境工程伦理(ver1.1) .pdf 第 42 页",
+              "score": 0.0164,
+              "score_type": "rrf",
+              "dense_cosine_max": null,
+              "bm25_score": 11.3146,
+              "coverage": 0.2309,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "项目",
+                "存在",
+                "处理"
+              ],
+              "phrase_match": false,
+              "snippet": "分析讨论 请大家详细了解“山东曹县垃圾发电项目环评事件”， 分析环境工程师应承担的责任并回答下列问题。 1.环境工作者在遭遇领导不合理指示时应如何协调处理？ 2.当环境工程评估不满足标准时但又要实施时，环境工作 者应如何处理？当满足标准时实施时但仍存在污染风险时， 环境工作者又应如何处理？",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 2,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:31",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 31,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 31 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 31 页",
+              "score": 0.032,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.838413372624808,
+              "bm25_score": 7.1719,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "伦理",
+                "责任"
+              ],
+              "phrase_match": true,
+              "snippet": "2.4 工程风险中的伦理责任 2.4.1 伦理责任 伦理责任也不等同于职业责任。 职业责任是工程师履行本职工作时应尽的岗位(角色)责任 ，而伦理责任是为了社会和公众利益需要承担的维护公平和正 义等伦理原则的责任。 工程师的伦理责任一般说来大于或重于职业责任。如果工 程师所在的企业作出了违背伦理的决策，损害了社会和公众的 利益，简单恪守职业责任会导致同流合污，而尽到伦理责任才 能够切实保护社会和公众的利益。职业责任和伦理责任在大多 数情况下是一致的，但在某些情况下则会发生冲突，这就需要 工程师在职业责任和伦理责任之问进行权衡。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 3,
+              "evidence_id": "f006424c35b1698744692a162498ccc12d552f643cede47e1ef0dab9e3e57325:02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf:8",
+              "filename": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf",
+              "page_number": 8,
+              "citation": "《02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf》第 8 页",
+              "location": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "filename_with_page": "02工程伦理第三讲工程中的风险、责任与安全(ver1.1).pdf 第 8 页",
+              "score": 0.0328,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7531091938226947,
+              "bm25_score": 3.8975,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "风险"
+              ],
+              "phrase_match": true,
+              "snippet": "2.2.1 工程风险的来源 1、工程风险的技术因素 1）工程中零部件老化，导致系统功能失调，从而 引发事故风险。 2）控制系统失灵；现代工程：高度复杂、高度集 成，但智能程度不高，存在引发事故的隐患。 3）非线性作用。当干扰较强时，系统的非线性对 干扰没有反应，或者相反，从而引发安全隐患。",
+              "duplicate_count": 1,
+              "review_category": "A",
+              "repair_applied": false,
+              "review_label": "A｜已审核：核心文字与顺序完整",
+              "strict_eligible": true,
+              "evidence_status": "strict",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": "风险技术因素三条完整对应，与下一物理页相同内容属于原课件重复，保留来源不自动删页。"
+            },
+            {
+              "rank": 4,
+              "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:50",
+              "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+              "page_number": 50,
+              "citation": "《05工程伦理第六讲工程师的职业伦理(ver1.1).pdf》第 50 页",
+              "location": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 50 页",
+              "filename_with_page": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 50 页",
+              "score": 0.0328,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.8463374529250871,
+              "bm25_score": 10.7977,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "职业",
+                "伦理",
+                "规范"
+              ],
+              "phrase_match": true,
+              "snippet": "工程师应该对什么负责?向谁负责?谁负责任? 各工程社团的职业伦理章程对工程师的职业 伦理规范进行了比较详细的解释，包括：首要责 任原则、工程师的权利与责任、工程师的职业美 德、如何作正确的伦理决策。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            },
+            {
+              "rank": 5,
+              "evidence_id": "09827f72c32e557158d9e068eff81fdd7a3a3291ff7d08d7461a9dc5734a0cb3:05工程伦理第六讲工程师的职业伦理(ver1.1).pdf:40",
+              "filename": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf",
+              "page_number": 40,
+              "citation": "《05工程伦理第六讲工程师的职业伦理(ver1.1).pdf》第 40 页",
+              "location": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 40 页",
+              "filename_with_page": "05工程伦理第六讲工程师的职业伦理(ver1.1).pdf 第 40 页",
+              "score": 0.0596,
+              "score_type": "rrf",
+              "dense_cosine_max": 0.7997854126019798,
+              "bm25_score": 9.4706,
+              "coverage": 1.0,
+              "matched_terms": [
+                "工程",
+                "工程师",
+                "职业",
+                "伦理",
+                "规范"
+              ],
+              "phrase_match": true,
+              "snippet": "5.3.2 工程师职业伦理章程 其二，微观层面的责任要求作为职业伦理规范的一 部分，它体现为促进工程师的诚实责任，即“在处理 所有关系时，工程师应当以诚实和正直的最高标准为 指导”，引导工程师在实践中养成诚实正直的美德。",
+              "duplicate_count": 0,
+              "review_category": null,
+              "repair_applied": false,
+              "review_label": "未审核｜不能作为已验证依据",
+              "strict_eligible": false,
+              "evidence_status": "unreviewed",
+              "page_status": "text",
+              "page_status_label": "有文本",
+              "review_note": ""
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "metrics_note": "真实问题没有人工金标，不计算或声称Recall/MRR提升。"
+}

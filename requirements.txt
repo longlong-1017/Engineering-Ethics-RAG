@@ -1,0 +1,15 @@
+# PDF 文本提取
+PyMuPDF==1.26.7
+
+# 中文分词
+jieba==0.42.1
+
+# 网页界面
+streamlit==1.50.0
+
+# DeepSeek API 与本地配置
+requests==2.32.5
+python-dotenv==1.1.1
+
+# 自动化测试
+pytest==9.2.0
