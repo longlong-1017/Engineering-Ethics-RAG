@@ -73,6 +73,8 @@ class Hit:
         return {
             "rank": self.rank,
             "evidence_id": self.evidence_id,
+            "dataset_version": self.page.dataset_version,
+            "version_label": self.page.version_label,
             "filename": self.page.filename,
             "page_number": self.page.page_number,
             "citation": self.citation,
@@ -114,7 +116,15 @@ class SearchResponse:
     @property
     def enough_evidence(self) -> bool:
         """主题身份和所问关系必须有正文支持，相关度不等于证据充分。"""
-        return plan_evidence(self.query, self.hits).supported
+        return plan_evidence(self.query, self.evidence_hits).supported
+
+    @property
+    def evidence_hits(self):
+        """双版本候选可同时展示，生成证据只取已选定的一版，避免未核实的混写。"""
+        version = self.diagnostics.get('answer_version')
+        if version == 'none':
+            return ()
+        return tuple(h for h in self.hits if h.page.dataset_version == version) if version else self.hits
 
     @property
     def has_unreviewed(self) -> bool:

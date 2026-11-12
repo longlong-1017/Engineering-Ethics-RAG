@@ -46,6 +46,7 @@ class Settings:
     price_output_cny_per_m: float | None = None
     price_cache_hit_cny_per_m: float | None = None
     max_output_tokens: int = 1000
+    case_max_output_tokens: int = 3600
     max_input_chars: int = 16000
     api_state_path: Path = PROJECT_ROOT / 'data/runtime/api_limits.sqlite3'
 
@@ -81,6 +82,7 @@ class Settings:
             price_output_cny_per_m=_number(source, 'DEEPSEEK_PRICE_OUTPUT_CNY_PER_M', None, .000001, 100000),
             price_cache_hit_cny_per_m=_number(source, 'DEEPSEEK_PRICE_CACHE_HIT_CNY_PER_M', None, 0, 100000),
             max_output_tokens=_number(source, 'DEEPSEEK_MAX_OUTPUT_TOKENS', 1000, 1, 4096, int),
+            case_max_output_tokens=_number(source, 'DEEPSEEK_CASE_MAX_OUTPUT_TOKENS', 3600, 1, 4096, int),
             max_input_chars=_number(source, 'DEEPSEEK_MAX_INPUT_CHARS', 16000, 1000, 50000, int),
         )
 

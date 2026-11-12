@@ -135,7 +135,10 @@ def test_oversized_input_does_not_truncate_or_send(config):
 def test_truncated_completion_is_not_presented_as_complete(config):
     resp=response();resp._payload['choices'][0]['finish_reason']='length'
     c,_=client(config,resp=resp)
-    with pytest.raises(DeepSeekError,match='截断'):c.chat([{'role':'user','content':'测试'}],allow_api=True)
+    with pytest.raises(DeepSeekError,match='截断') as exc:
+        c.chat([{'role':'user','content':'测试'}],allow_api=True)
+    assert exc.value.code == 'output_truncated'
+    assert exc.value.attempted and exc.value.quota_consumed
 
 
 def test_response_key_and_unsafe_usage_not_returned(config):
@@ -184,7 +187,7 @@ def test_env_configuration_bounds_and_secret_repr(monkeypatch):
     c=Settings.from_env(env={'DEEPSEEK_API_KEY':KEY,'DEEPSEEK_TIMEOUT':'nan','DEEPSEEK_CONNECT_TIMEOUT':'inf',
                             'DEEPSEEK_MAX_REQUESTS':'-3','DEEPSEEK_MAX_OUTPUT_TOKENS':'999999','DEEPSEEK_API_ENABLED':'true'})
     assert c.api_enabled and c.timeout_seconds==30 and c.connect_timeout_seconds==5
-    assert c.max_requests is None and c.max_output_tokens==1000 and KEY not in repr(c)
+    assert c.max_requests is None and c.max_output_tokens==1000 and c.case_max_output_tokens==3600 and KEY not in repr(c)
     assert not Settings.from_env(env={}).api_enabled
 
 

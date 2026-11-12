@@ -16,6 +16,10 @@ from tests.helpers import make_corpus, make_page, structured_answer
 from tests.test_qa import FakeClient
 
 
+def _fake_hit(rank, text, page_number=1):
+    return SimpleNamespace(rank=rank, page=make_page(text, category="A", page_number=page_number))
+
+
 def _engine(pages, content):
     fake = FakeClient(content=content)
     engine = AnswerEngine(
@@ -112,7 +116,7 @@ def test_structured_validator_rejects_wrong_number_and_unknown_entity():
     assert bad_number.ok
     checked = validate_structured_answer(
         bad_number.answer, "环境工程中的安全与社会公正有什么关系？",
-        {1: (type("H", (), {"strict_eligible": True})(), evidence)},
+        {1: (_fake_hit(1, evidence, page_number=28), evidence)},
     )
     assert not checked.ok
     assert any("数字" in error for error in checked.errors)
@@ -122,7 +126,7 @@ def test_structured_validator_rejects_wrong_number_and_unknown_entity():
     )
     checked = validate_structured_answer(
         bad_entity.answer, "环境工程中的安全与社会公正有什么关系？",
-        {1: (type("H", (), {"strict_eligible": True})(), evidence)},
+        {1: (_fake_hit(1, evidence, page_number=28), evidence)},
     )
     assert not checked.ok
 
@@ -138,7 +142,7 @@ def test_structured_summary_with_new_number_is_rejected():
     assert parsed.ok
     checked = validate_structured_answer(
         parsed.answer, "工程事故的后果是什么？",
-        {1: (SimpleNamespace(), "安全包括生产安全。")},
+        {1: (_fake_hit(1, "安全包括生产安全。"), "安全包括生产安全。")},
     )
     assert not checked.ok
     assert any("数字" in error for error in checked.errors)
@@ -156,8 +160,8 @@ def test_structured_point_with_irrelevant_extra_citation_is_rejected():
     checked = validate_structured_answer(
         parsed.answer, "工程安全包括什么？",
         {
-            1: (SimpleNamespace(), "工程安全包括生产安全。"),
-            2: (SimpleNamespace(), "社会公正要求公平分配资源。"),
+            1: (_fake_hit(1, "工程安全包括生产安全。"), "工程安全包括生产安全。"),
+            2: (_fake_hit(2, "社会公正要求公平分配资源。"), "社会公正要求公平分配资源。"),
         },
     )
     assert not checked.ok

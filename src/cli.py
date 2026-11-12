@@ -22,6 +22,7 @@ from src.qa import (
     PROVIDER_LOCAL,
     QA_MODE_GENERAL,
     QA_MODE_HYBRID,
+    QA_MODE_LOCAL,
     QA_MODE_RAG,
     AnswerEngine,
 )
@@ -57,7 +58,7 @@ def _build_parser() -> argparse.ArgumentParser:
     ask_parser.add_argument("--top-k", type=int, default=6, help="证据页数")
     ask_parser.add_argument(
         "--qa-mode",
-        choices=(QA_MODE_HYBRID, QA_MODE_RAG, QA_MODE_GENERAL),
+        choices=(QA_MODE_HYBRID, QA_MODE_LOCAL, QA_MODE_RAG, QA_MODE_GENERAL),
         default=QA_MODE_HYBRID,
         help="hybrid=严格→扩展→通用知识；rag=仅严格课件；general=直接通用问答",
     )

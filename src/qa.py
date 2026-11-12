@@ -48,11 +48,15 @@ VERIFICATION_LABELS = {
 }
 
 QA_MODE_RAG = "rag"
+QA_MODE_LOCAL = "local"
 QA_MODE_HYBRID = "hybrid"
 QA_MODE_GENERAL = "general"
-QA_MODES = frozenset({QA_MODE_RAG, QA_MODE_HYBRID, QA_MODE_GENERAL})
+QA_MODE_NEW_FIRST = "new_first"
+QA_MODES = frozenset({QA_MODE_RAG, QA_MODE_LOCAL, QA_MODE_HYBRID, QA_MODE_GENERAL, QA_MODE_NEW_FIRST})
 QA_MODE_LABELS = {
+    QA_MODE_NEW_FIRST: "新版优先混合检索（含待审核来源）",
     QA_MODE_RAG: "仅课件 RAG",
+    QA_MODE_LOCAL: "本地模式（仅检索）",
     QA_MODE_HYBRID: "智能混合问答",
     QA_MODE_GENERAL: "DeepSeek 通用问答",
 }
@@ -147,6 +151,7 @@ class Answer:
     verification_status: str = VERIFICATION_VERIFIED
     verification_errors: tuple[str, ...] = ()
     verification_layers: dict[str, Any] | None = None
+    source_review_pending: bool = False
 
     @property
     def is_insufficient(self) -> bool:
@@ -170,10 +175,14 @@ class Answer:
 
     @property
     def verification_label(self) -> str:
+        if self.source_review_pending and self.verification_status == VERIFICATION_UNVERIFIED:
+            return "新版来源待审核（非VERIFIED）"
         return VERIFICATION_LABELS.get(self.verification_status, self.verification_status)
 
     @property
     def source_label(self) -> str:
+        if self.evidence_source == QA_MODE_NEW_FIRST:
+            return "新版优先，旧版补充（版本分别标注）"
         if self.general_knowledge:
             return "AI 通用知识（未经课件核实）"
         if self.evidence_source == EVIDENCE_SOURCE_STRICT:
@@ -201,6 +210,7 @@ class Answer:
             "verification_label": self.verification_label,
             "verification_errors": list(self.verification_errors),
             "verification_layers": self.verification_layers,
+            "source_review_pending": self.source_review_pending,
             "model": self.model,
             "warnings": list(self.warnings),
             "citations": [hit.to_dict() for hit in self.citations],
@@ -217,7 +227,7 @@ class Answer:
                 "verification_errors": list(self.verification_errors),
             },
             "evidence_checks": [] if self.general_knowledge else list(
-                plan_evidence(self.question, self.search.hits).checks
+                plan_evidence(self.question, self.search.evidence_hits).checks
             ),
         }
 
@@ -309,6 +319,29 @@ class AnswerEngine:
             )
             source = EVIDENCE_SOURCE_STRICT if result.mode == "strict" else EVIDENCE_SOURCE_EXPANDED
             return self._tag(result, QA_MODE_RAG, source)
+        if qa_mode == QA_MODE_NEW_FIRST:
+            result = self._answer_courseware(question, mode='new_first', top_k=top_k,
+                                             provider=provider, allow_api=allow_api)
+            result = self._tag(result, QA_MODE_NEW_FIRST, QA_MODE_NEW_FIRST)
+            used = plan_evidence(question, result.search.evidence_hits).quotes
+            if (result.status == STATUS_OK and result.verification_status == VERIFICATION_VERIFIED
+                    and any(h.page.dataset_version == 'exam_2026' and not h.strict_eligible for h, _ in used)):
+                reason = '来源审核：新版页面待审核，引用/事实校验通过不等于来源已审核。'
+                layers = dict(result.verification_layers or {})
+                layers['source_review'] = dict(ok=False, state='pending', reason=reason)
+                result = replace(result, verification_status=VERIFICATION_UNVERIFIED,
+                                 source_review_pending=True, verification_layers=layers,
+                                 warnings=result.warnings + (reason,),
+                                 api_outcome='unverified' if result.api_outcome == 'accepted' else result.api_outcome,
+                                 api_reason=reason if result.api_outcome == 'accepted' else result.api_reason)
+            return result
+        if qa_mode == QA_MODE_LOCAL:
+            # 本地模式：检索全部本地材料，但绝不调用外部模型。
+            result = self._answer_courseware(
+                question, mode="expanded", top_k=top_k,
+                provider=PROVIDER_LOCAL, allow_api=False,
+            )
+            return self._tag(result, QA_MODE_LOCAL, EVIDENCE_SOURCE_EXPANDED)
         if qa_mode == QA_MODE_RAG:
             # 仅课件 RAG 只允许严格合格页；扩展页必须走智能混合模式。
             result = self._answer_courseware(
@@ -354,6 +387,9 @@ class AnswerEngine:
         search_top_k = max(top_k, 10) if definition_question else top_k
         search = self.retriever.search(question, mode=mode, top_k=search_top_k)
         warnings: list[str] = []
+        if mode == 'new_first':
+            warnings.extend(search.diagnostics.get('conflicts', ()))
+            warnings.append(search.diagnostics.get('version_note', '新版优先；来源审核状态独立显示。'))
         if search.evidence_warning:
             warnings.append(search.evidence_warning)
         if provider == PROVIDER_DEEPSEEK and not allow_api:
@@ -387,14 +423,15 @@ class AnswerEngine:
         if use_api and not self.client.configured:
             warnings.append("未配置 DEEPSEEK_API_KEY，已使用离线原文摘录。")
             use_api = False
-        if use_api and not plan_evidence(question, search.hits).quotes:
+        if use_api and not plan_evidence(question, search.evidence_hits).quotes:
             warnings.append("证据规划未产生可引用正文；未发送 API 请求，使用离线摘录。")
             use_api = False
 
         if use_api:
             context = tuple(dict(id=f'S{h.rank}', filename=h.page.filename,
-                page_number=h.page.page_number, text=text, quality=h.review_label)
-                for h,text in plan_evidence(question,search.hits).quotes)
+                page_number=h.page.page_number, text=text, quality=h.review_label,
+                dataset_version=h.page.dataset_version, version_label=h.page.version_label)
+                for h,text in plan_evidence(question,search.evidence_hits).quotes)
             try:
                 result = self.client.chat(
                     self._build_messages(question, search, context=context),
@@ -436,7 +473,7 @@ class AnswerEngine:
         definition_question = is_definition_question(question)
         search_top_k = max(top_k, 10) if definition_question else top_k
         search = self.retriever.search(question, mode=mode, top_k=search_top_k)
-        plan = plan_evidence(question, search.hits)
+        plan = plan_evidence(question, search.evidence_hits)
         ready = False
         if search.hits and search.enough_evidence and plan.quotes:
             local = self._local_answer(question, search, [])
@@ -530,7 +567,7 @@ class AnswerEngine:
             return self._general_blocked(question, search, "未配置 DEEPSEEK_API_KEY")
         try:
             result = self.client.chat(
-                self._general_messages(question),
+                self._general_messages(question, search),
                 temperature=0.3,
                 max_tokens=1200,
                 allow_api=True,
@@ -538,7 +575,12 @@ class AnswerEngine:
         except DeepSeekError as exc:
             return self._general_error(question, search, exc)
 
-        text, warnings = _sanitize_general_answer(result.content)
+        text, warnings_tuple = _sanitize_general_answer(result.content)
+        warnings = list(warnings_tuple)
+        if search.hits:
+            warnings.append(
+                "本地检索到部分相关材料，但未达到完整证据；以下回答包含 AI 通用补充，不能把本地片段当作完整依据。"
+            )
         if not text:
             return self._general_error(
                 question, search,
@@ -561,13 +603,27 @@ class AnswerEngine:
             verification_errors=("AI 通用知识补充，未经课件核实",),
         )
 
-    def _general_messages(self, question: str) -> list[dict[str, str]]:
+    def _general_messages(self, question: str, search: SearchResponse | None = None) -> list[dict[str, str]]:
+        material_note = "本次不提供课件证据。"
+        if search is not None and search.hits:
+            snippets = []
+            for hit in search.hits[:4]:
+                snippets.append(
+                    f"- {hit.page.filename}｜物理第 {hit.page.page_number} 页｜"
+                    f"{hit.snippet[:240]}"
+                )
+            material_note = (
+                "本地检索到以下部分相关片段，但它们不足以构成完整答案，"
+                "只能作为背景；不得声称这些片段逐条支持你的结论，"
+                "也不得输出 PDF 文件名、页码或 [S#]。\n"
+                + "\n".join(snippets)
+            )
         return [
             {"role": "system", "content": _GENERAL_SYSTEM_PROMPT},
             {
                 "role": "user",
-                "content": "问题：" + question + "\n\n本次不提供课件证据。"
-                           "请只使用通用工程伦理知识，按指定结构回答；"
+                "content": "问题：" + question + "\n\n" + material_note +
+                           "\n请使用通用工程伦理知识补充，按指定结构回答；"
                            "不要输出 [S#]、PDF 文件名或页码。",
             },
         ]
@@ -663,7 +719,7 @@ class AnswerEngine:
         )
 
     def _build_messages(self, question: str, search: SearchResponse, *, context=None) -> list[dict[str, str]]:
-        plan = plan_evidence(question, search.hits)
+        plan = plan_evidence(question, search.evidence_hits)
         evidence_blocks = []
         for hit, quote in plan.quotes:
             evidence_blocks.append(
@@ -676,7 +732,7 @@ class AnswerEngine:
                 )
             )
         if context is not None:
-            evidence_blocks = [f"[{e['id']}] 文件：{e['filename']}｜PDF 第 {e['page_number']} 页\n正文：{e['text']}" for e in context]
+            evidence_blocks = [f"[{e['id']}] 版本：{e.get('version_label','旧版·补充')}｜文件：{e['filename']}｜PDF 第 {e['page_number']} 页\n正文：{e['text']}" for e in context]
         allowed = "、".join(f"[S{hit.rank}]" for hit, _ in plan.quotes) or "（无）"
         scope = "严格检索（仅 81 个严格合格页）" if search.mode == "strict" else "扩展检索（含未审核页面）"
         user_prompt = "\n\n".join(
@@ -720,7 +776,7 @@ class AnswerEngine:
                 usage=result.usage, accounting=result.accounting,
             )
 
-        plan = plan_evidence(question, search.hits)
+        plan = plan_evidence(question, search.evidence_hits)
         evidence_map = {hit.rank: (hit, text) for hit, text in plan.quotes}
         parsed = parse_structured_answer(content, tuple(evidence_map))
         if not parsed.ok:
@@ -803,7 +859,7 @@ class AnswerEngine:
         usage=None,
         accounting=None,
     ) -> Answer:
-        evidence_map = {hit.rank:(hit,text) for hit,text in plan_evidence(question,search.hits).quotes}
+        evidence_map = {hit.rank:(hit,text) for hit,text in plan_evidence(question,search.evidence_hits).quotes}
         layers=validate_structured_answer(draft,question,evidence_map,policy=self.validation_policy).layers
         structural=[e for e in errors if '引用编号' in e or '文件名或页码' in e]
         if structural:
@@ -835,7 +891,7 @@ class AnswerEngine:
         search: SearchResponse,
         warnings: list[str],
     ) -> Answer:
-        plan = plan_evidence(question, search.hits)
+        plan = plan_evidence(question, search.evidence_hits)
         if not plan.supported:
             return self._insufficient_answer(question, search, warnings, reason="未找到同时支持问题主体与所问关系的正文。")
         risky = any(not hit.strict_eligible for hit,_ in plan.quotes)

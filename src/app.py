@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import sys
 import re
+import hashlib
 from dataclasses import replace
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -21,10 +22,8 @@ from src.corpus import CorpusError, REVIEW_CATEGORY_LABELS, UNREVIEWED_LABEL, lo
 from src.qa import (
     PROVIDER_AUTO,
     PROVIDER_LOCAL,
-    QA_MODE_GENERAL,
     QA_MODE_HYBRID,
-    QA_MODE_LABELS,
-    QA_MODE_RAG,
+    QA_MODE_LOCAL,
     VERIFICATION_FAILED,
     VERIFICATION_UNVERIFIED,
     AnswerEngine,
@@ -33,6 +32,18 @@ from src.qa import (
 )
 from src.retriever import MODE_STRICT, Retriever
 from src.text_utils import query_terms
+from src.versioned_corpus import (RELEASE, load_versions, load_version_indexes,
+                                  combined_corpus, VersionedRetriever, source_pdf)
+from src.exam_materials import LocalMaterialsRetriever
+from src.choice_solver import ChoiceSolution, solve_choice_raw_text
+from src.case_solver import (
+    CaseSolution,
+    case_answer_markdown,
+    parse_case_questions,
+    questions_from_editable_lines,
+    solve_case,
+)
+from src.ocr import recognize_image
 
 
 EXAMPLES = [
@@ -46,11 +57,27 @@ EXAMPLES = [
 
 
 @st.cache_resource(show_spinner=False)
-def load_runtime():
+def load_runtime(release=RELEASE):
     settings = Settings.from_env()
-    corpus = load_corpus(settings.data_dir)
-    dense,dense_status=load_project_dense_status(corpus)
-    return settings, corpus, Retriever(corpus,dense_index=dense,dense_status=dense_status)
+    old, new = load_versions()
+    indexes = load_version_indexes(old, new)
+    base = VersionedRetriever(old, new, indexes=indexes)
+    try:
+        retriever = LocalMaterialsRetriever.load(base)
+    except Exception:
+        # 教材/题库不可用时仍保留双版本 PPT 检索，不阻断页面。
+        retriever = base
+    return settings, combined_corpus(old, new), retriever
+
+
+def reset_release_session(state, release=RELEASE):
+    """只清理答案/诊断，不触碰额度、AI开关、远程配置或凭据。"""
+    if state.get('corpus_release') != release:
+        for key in ('last_answer', 'last_api_diagnostic'):
+            state.pop(key, None)
+        state['corpus_release'] = release
+        return True
+    return False
 
 
 
@@ -62,7 +89,10 @@ MOBILE_CSS = """<style>
   [data-testid="stMain"] textarea, [data-testid="stMain"] input { font-size: 16px !important; }
   [data-testid="stMain"] button { min-height: 44px; white-space: normal; }
   [data-testid="stMain"] [data-testid="stVerticalBlock"] { min-width: 0; }
+  [data-testid="stFileUploader"], [data-testid="stFileUploaderDropzone"] { width: 100% !important; }
+  [data-testid="stMain"] [data-testid="stForm"] button { width: 100% !important; }
 }
+[data-testid="stFileUploader"] { max-width: 100%; }
 [data-testid="stMarkdownContainer"] p, [data-testid="stMarkdownContainer"] li,
 [data-testid="stCaptionContainer"] { overflow-wrap: anywhere; }
 [data-testid="stMain"] pre { white-space: pre-wrap; overflow-wrap: anywhere; }
@@ -95,7 +125,13 @@ def answer_sections(text):
 
 def compact_exam_answer(answer):
     """保守摘录：保留完整论点及其引用，不重写、不截数字/限定词、不凑要点。"""
-    if (answer.status!='ok' or getattr(answer,'verification_status','unverified')!='verified'
+    layers = getattr(answer, 'verification_layers', None) or {}
+    pending = (getattr(answer, 'source_review_pending', False)
+               and getattr(answer, 'verification_status', '') == 'unverified'
+               and not getattr(answer, 'verification_errors', ())
+               and layers.get('reference_integrity', {}).get('ok') is True
+               and layers.get('claim_support', {}).get('ok') is True)
+    if (answer.status!='ok' or (getattr(answer,'verification_status','unverified')!='verified' and not pending)
             or getattr(answer,'general_knowledge',False)):
         return None
     sections=answer_sections(answer.answer)
@@ -159,9 +195,8 @@ def render_evidence(hits, title: str) -> None:
                 st.caption(f"相同正文还出现在其他 {hit.duplicate_count} 个页面。")
             if hit.page.review_note:
                 st.caption(f"审核备注：{hit.page.review_note}")
-            pdf_root=(ROOT / "data/pdfs").resolve()
-            pdf=(pdf_root / hit.page.filename).resolve()
-            if pdf.parent==pdf_root and pdf.is_file():
+            pdf=source_pdf(hit.page)
+            if pdf.is_file():
                 st.download_button("下载来源PDF（请打开物理第%d页）" % hit.page.page_number,
                                    pdf.read_bytes(), file_name=pdf.name, mime="application/pdf",
                                    key=f"pdf_{title}_{hit.rank}_{hit.page.filename}_{hit.page.page_number}",on_click="ignore")
@@ -200,6 +235,7 @@ def answer_api_diagnostic(answer):
         'model_calls': getattr(answer, 'model_calls', 0),
         'raw_output': getattr(answer, 'model_raw_output', None),
         'verification_status': getattr(answer, 'verification_status', 'verified'),
+        'source_review_pending': getattr(answer, 'source_review_pending', False),
         'verification_errors': list(getattr(answer, 'verification_errors', ())),
     }
 
@@ -220,6 +256,8 @@ def render_api_diagnostic(diagnostic):
         st.success('DeepSeek 通用知识回答已生成；该部分未经课件核实，不含课件引用。')
     elif outcome == 'accepted':
         st.success('API已返回且引用校验通过；此条答案来源为DeepSeek课件证据。')
+    elif outcome == 'unverified' and diagnostic.get('source_review_pending'):
+        st.warning('API已返回；引用与事实校验通过，但新版来源待审核，保留为UNVERIFIED草稿。')
     elif outcome == 'unverified':
         st.warning('API已返回可读答案，但未通过严格逐条校验；已保留为未核验 AI 草稿。' + reason)
     elif outcome == 'unparseable':
@@ -250,7 +288,9 @@ def render_answer(answer) -> None:
     elif answer.status == STATUS_ERROR:
         st.error("无法生成回答。")
     elif verification == VERIFICATION_UNVERIFIED:
-        if answer.general_knowledge:
+        if getattr(answer, 'source_review_pending', False):
+            st.warning('新版来源待审核，答案不是 VERIFIED；请核对课件。引用与事实校验不替代来源审核。')
+        elif answer.general_knowledge:
             st.success("已生成 AI 通用知识答案；该部分未经课件核实。")
         else:
             st.warning("AI 生成草稿，未经逐条事实核验；不得作为已验证课件依据。")
@@ -267,14 +307,10 @@ def render_answer(answer) -> None:
         f"回答模式：{answer.qa_mode_label}｜证据来源：{answer.source_label}｜"
         f"验证状态：{answer.verification_label}｜生成方式：{answer.provider_label}"
     )
-    if answer.general_knowledge:
-        st.warning("AI 通用知识补充，未经课件核实；本部分不提供 [S#] 或 PDF 页码。")
     context=getattr(answer,'evidence_context',())
-    if context or any(not h.strict_eligible for h in getattr(answer,'citations',())):
-        st.warning('引用来源未人工复核；自动校验通过不等于教师/人工确认，请核对原课件。')
     compact=compact_exam_answer(answer)
     if compact:
-        st.subheader('笔试精简答案')
+        st.subheader('笔试精简草稿（新版来源待审核）' if getattr(answer, 'source_review_pending', False) else '笔试精简答案')
         st.markdown(compact['summary'])
         for i,point in enumerate(compact['points'],1):
             st.markdown(f'{i}. {point}')
@@ -283,11 +319,20 @@ def render_answer(answer) -> None:
             st.markdown(' · '.join(f'**{term}**' for term in compact['keywords']))
         st.caption('参考课件（PDF物理页码）')
         for ref,filename,page in compact['sources']:
-            st.markdown(f'[{ref}] {filename}｜物理第{page}页')
+            version = next((e.get('version_label', '') for e in context if e['id'] == ref), '')
+            st.markdown(f'[{ref}] {version + "｜" if version else ""}{filename}｜物理第{page}页')
         if compact['omitted']:
             st.caption(f"另有{compact['omitted']}条要点保留在详细分析中；精简版不是完整论述。")
     else:
         st.info('当前结果未通过核验、证据不足或无法无损提取，不生成笔试标准答案。完整结果与风险保留在下方。')
+    if answer.general_knowledge:
+        st.warning("AI 通用知识补充，未经课件核实；本部分不提供 [S#] 或 PDF 页码。")
+    if answer.search.diagnostics.get('version_note'):
+        st.info(answer.search.diagnostics['version_note'])
+    for issue in answer.search.diagnostics.get('conflicts', ()):
+        st.warning(issue)
+    if context or any(not h.strict_eligible for h in getattr(answer,'citations',())):
+        st.warning('引用来源未人工复核；自动校验通过不等于教师/人工确认，请核对原课件。')
     with st.expander('详细分析（原始完整答案）',expanded=False):
         st.markdown(answer.answer)
     supplements=[value for key,value in answer_sections(answer.answer).items() if key.startswith('AI补充')]
@@ -297,20 +342,22 @@ def render_answer(answer) -> None:
             for supplement in supplements:st.markdown(supplement)
         else:st.caption('本次没有单独的AI补充。')
     with st.expander('来源与校验风险（独立于答题正文）', expanded=True):
-        if verification == VERIFICATION_UNVERIFIED:
+        if verification == VERIFICATION_UNVERIFIED and getattr(answer, 'source_review_pending', False):
+            st.warning('引用与事实校验通过；新版来源待审核，不能作为已审核课件结论。')
+        elif verification == VERIFICATION_UNVERIFIED:
             st.warning('AI草稿未经核验；真实来源映射只说明资料存在，不证明每个论点得到支持。')
         for issue in getattr(answer, 'verification_errors', ()):
             st.warning(issue)
         for source in getattr(answer, 'evidence_context', ()):
             quality=source.get('quality','')
-            st.caption(f"[{source['id']}] {source['filename']}｜物理第{source['page_number']}页｜来源未人工复核；{quality}")
+            st.caption(f"[{source['id']}] {source.get('version_label','')}｜{source['filename']}｜物理第{source['page_number']}页｜来源未人工复核；{quality}")
     render_api_diagnostic(answer_api_diagnostic(answer))
     with st.expander('本次检索证据', expanded=False):
         context=getattr(answer,'evidence_context',())
         if not context:
             st.info('本次没有向课件问答模型传入证据；离线或通用回答不冒充课件RAG。')
         for evidence in context:
-            st.markdown(f"**[{evidence['id']}] {evidence['filename']}｜物理第{evidence['page_number']}页**")
+            st.markdown(f"**[{evidence['id']}] {evidence.get('version_label','')}｜{evidence['filename']}｜物理第{evidence['page_number']}页**")
             st.caption(evidence['quality'])
             st.text(evidence['text'])
         if context:
@@ -333,7 +380,11 @@ def render_answer(answer) -> None:
             st.info("以下为检索到的课件证据，仅用于人工复核，不是 AI 草稿的已验证引用：")
             render_evidence(answer.search.hits[:8], "检索到的课件证据（未作为已验证依据）")
         elif answer.general_knowledge:
-            st.info("本答案来自 DeepSeek 通用知识，不使用课件证据，因此没有 PDF 页码或 [S#] 引用。")
+            if answer.search.hits:
+                st.info("本答案包含 AI 通用补充；以下仅为本地检索到的部分材料，未作为完整依据。")
+                render_evidence(answer.search.hits[:5], "本地部分材料（未作为已验证依据）")
+            else:
+                st.info("本答案来自 DeepSeek 通用知识，不使用课件证据，因此没有 PDF 页码或 [S#] 引用。")
         else:
             render_evidence(answer.citations, "原文证据与 PDF 页码")
             cited={(hit.page.filename,hit.page.page_number) for hit in answer.citations}
@@ -369,6 +420,467 @@ def render_answer(answer) -> None:
             )
 
 
+def render_choice_solution(solution: ChoiceSolution) -> None:
+    st.subheader("💡 选择题解答结果")
+    qtype = getattr(solution, 'question_type', '自动')
+    st.caption(f"题型：{qtype}")
+    if getattr(solution, 'uncertainty_reason', ''):
+        st.warning("题型不确定：" + solution.uncertainty_reason)
+    if solution.verified:
+        st.success(f"已匹配学习通题库已核实标准答案（{solution.source_detail}）")
+    elif "待核实" in solution.source:
+        st.warning("⚠️ 题库中该题答案标记为待核实，未采用学生作答；此处答案由课件证据与 DeepSeek 综合推断。")
+    elif solution.answer:
+        st.info(f"AI 推断答案：{solution.source_detail}")
+    else:
+        st.warning("未生成确定答案。请参考解析与课件线索。")
+
+    with st.container(border=True):
+        if getattr(solution, 'question_type', '') == "不确定" and solution.answer:
+            st.markdown(f"### 建议答案：:orange[{solution.answer}]")
+        elif solution.answer:
+            st.markdown(f"### 答案：:green[{solution.answer}]")
+        else:
+            st.markdown("### 建议答案：:orange[待推断]")
+        badge_icon = "🟢" if solution.verified else ("⚠️" if getattr(solution, 'question_type', '') == "不确定" else ("🟡" if "待核实" in solution.source else "🤖"))
+        st.markdown(f"**来源**：{badge_icon} {solution.source}")
+        st.caption(solution.source_detail)
+
+        st.divider()
+        st.markdown("**【解析与依据】**")
+        st.markdown(solution.analysis)
+
+        if getattr(solution, 'option_analysis', None):
+            with st.expander("逐项判断", expanded=False):
+                for letter, reason in sorted(solution.option_analysis.items()):
+                    st.markdown(f"- **{letter}**：{reason}")
+
+        if solution.warning:
+            st.caption(f"提示：{solution.warning}")
+        if getattr(solution, 'diagnostic', None):
+            with st.expander("选择题 AI 诊断（脱敏）", expanded=False):
+                diag = solution.diagnostic
+                st.write({
+                    "错误类型": diag.get("error_type") or "无",
+                    "模型": diag.get("model") or "未知",
+                })
+                if diag.get("raw_preview"):
+                    st.caption("模型原始响应预览（截断/脱敏）")
+                    st.code(diag["raw_preview"], language=None, wrap_lines=True)
+
+    if solution.evidence_context:
+        with st.expander("📚 参考课件与题库来源证据", expanded=False):
+            for e in solution.evidence_context:
+                st.markdown(f"**[{e['id']}] {e.get('version_label', '')}｜{e['filename']}｜物理第{e['page_number']}页**")
+                if e.get('quality'):
+                    st.caption(f"页面状态：{e['quality']}")
+                st.text(e['text'])
+
+
+def _clear_case_state() -> None:
+    """只清空案例分析输入/上传/OCR/答案，不影响其他模块。"""
+    for key in ("case_text", "case_questions_text"):
+        if key in st.session_state:
+            st.session_state[key] = ""
+    st.session_state.pop("last_case_solution", None)
+    st.session_state.pop("case_uploaded_hashes", None)
+    st.session_state.pop("case_ocr_cache", None)
+    st.session_state["case_questions_dirty"] = False
+    st.session_state["case_uploader_epoch"] = st.session_state.get("case_uploader_epoch", 0) + 1
+
+
+def _mark_case_questions_dirty() -> None:
+    st.session_state["case_questions_dirty"] = True
+    st.session_state.pop("last_case_solution", None)
+
+
+def _refresh_case_questions() -> None:
+    parsed = parse_case_questions(st.session_state.get("case_text", ""))
+    st.session_state["case_questions_text"] = "\n".join(q.text for q in parsed.questions)
+    st.session_state["case_questions_dirty"] = False
+    st.session_state.pop("last_case_solution", None)
+
+
+def process_case_uploads(uploaded_files, state, *, recognize=None):
+    """按上传顺序 OCR 多张案例截图；失败不覆盖其他已识别内容。"""
+    if not uploaded_files:
+        return 0, []
+    hashes = list(state.get("case_uploaded_hashes", []))
+    texts: list[str] = []
+    errors: list[str] = []
+    recognizer = recognize or recognize_image
+    for index, uploaded in enumerate(uploaded_files, 1):
+        name = str(getattr(uploaded, "name", "") or f"截图{index}")
+        suffix = Path(name).suffix.lower()
+        if suffix not in {".png", ".jpg", ".jpeg"}:
+            errors.append(f"{name}：格式不支持")
+            continue
+        try:
+            raw = uploaded.getvalue()
+        except Exception:
+            errors.append(f"{name}：无法读取")
+            continue
+        if not raw:
+            errors.append(f"{name}：图片为空")
+            continue
+        signature = hashlib.sha256(raw).hexdigest()
+        if signature in hashes:
+            continue
+        hashes.append(signature)
+        try:
+            result = recognizer(raw)
+        except Exception as exc:
+            errors.append(f"{name}：OCR 异常（{type(exc).__name__}）")
+            continue
+        if getattr(result, "status", "error") == "ok" and str(getattr(result, "text", "")).strip():
+            texts.append(str(result.text).strip())
+        else:
+            errors.append(f"{name}：{getattr(result, 'error', '未识别到文字')}")
+    state["case_uploaded_hashes"] = hashes
+    if texts:
+        existing = str(state.get("case_text", "")).strip()
+        merged = "\n\n".join(([existing] if existing else []) + texts)
+        state["case_text"] = merged
+        state.pop("last_case_solution", None)
+    return len(texts), errors
+
+
+def _clear_qa_state() -> None:
+    """清空简答题输入/上传/OCR/上次答案；不改变回答模式或额度。"""
+    if "question_input" in st.session_state:
+        st.session_state["question_input"] = ""
+    st.session_state.pop("last_answer", None)
+    st.session_state.pop("last_api_diagnostic", None)
+    st.session_state.pop("qa_uploaded_sig", None)
+    st.session_state.pop("qa_ocr_notice", None)
+    # 新的 uploader key 允许清空后重新上传同一张图片并再次识别。
+    st.session_state["qa_uploader_epoch"] = st.session_state.get("qa_uploader_epoch", 0) + 1
+
+
+def process_qa_upload(uploaded_file, state, *, recognize=None):
+    """处理简答题截图：只做 OCR 回填，不提交、不调用 DeepSeek。
+
+    返回 (status, message)；status 为 success / error / duplicate / none。
+    """
+    if uploaded_file is None:
+        state.pop("qa_uploaded_sig", None)
+        return "none", ""
+    name = str(getattr(uploaded_file, "name", "") or "")
+    suffix = Path(name).suffix.lower()
+    if suffix not in {".png", ".jpg", ".jpeg"}:
+        return "error", "图片格式不支持，请上传 PNG、JPG 或 JPEG。"
+    try:
+        raw = uploaded_file.getvalue()
+    except Exception:
+        return "error", "无法读取图片内容，请重新上传或手动输入。"
+    if not raw:
+        return "error", "图片为空，请重新上传或手动输入。"
+    signature = hashlib.sha256(raw).hexdigest()
+    if state.get("qa_uploaded_sig") == signature:
+        return "duplicate", ""
+    state["qa_uploaded_sig"] = signature
+    recognizer = recognize or recognize_image
+    try:
+        result = recognizer(raw)
+    except Exception as exc:
+        return "error", f"截图识别失败：{exc}。可手动输入题目。"
+    if getattr(result, "status", "error") == "ok" and str(getattr(result, "text", "")).strip():
+        state["question_input"] = result.text.strip()
+        state.pop("last_answer", None)
+        state.pop("last_api_diagnostic", None)
+        return "success", "题目截图识别完成，文字已填入下方输入框；请核对后点击“检索并回答”。"
+    return "error", f"截图识别失败：{getattr(result, 'error', '未识别到有效文字')}。可手动输入题目。"
+
+
+def render_case_solution(solution: CaseSolution) -> None:
+    if solution.status == "ok":
+        st.success(f"已按 {len(solution.questions)} 个设问生成案例答案。")
+        st.caption("以下为 AI 生成的分析作答，未经人工逐条核验；PPT 引用仅说明来源，请核对原文。")
+    elif solution.status == "incomplete":
+        st.warning("案例答案不完整：请查看下方完整性检查，不要直接当作完整答案。")
+    else:
+        st.error("案例分析未能生成可用答案；案例和检索证据已保留。")
+    if getattr(solution, "excluded_evidence", ()):
+        with st.expander("证据准入诊断（未进入模型上下文）", expanded=False):
+            for item in solution.excluded_evidence:
+                st.caption(
+                    f"设问{item.get('question', '?')}｜{item.get('filename', '')}｜"
+                    f"第{item.get('page', '?')}页｜{item.get('reason', '')}"
+                )
+    if solution.errors or solution.warnings:
+        with st.expander("完整性与生成风险", expanded=True):
+            for error in solution.errors:
+                st.warning(error)
+            for warning in solution.warnings:
+                st.warning(warning)
+    if solution.answers:
+        st.subheader("案例分析考试作答")
+        by_index = {a.index: a for a in solution.answers}
+        by_ref = solution.evidence_by_ref()
+        for question in solution.questions:
+            answer = by_index.get(question.number)
+            st.markdown(f"### 设问{question.number}：{question.text}")
+            if answer is None:
+                st.warning("本地完整性检查：该设问没有对应答案，请勿直接使用。")
+                continue
+            if getattr(answer, "points", ()):
+                for point_index, point in enumerate(answer.points, 1):
+                    st.markdown(f"**（{point_index}）{point.title}。** {point.analysis}")
+                    if point.evidence_ids:
+                        st.caption("要点引用：" + "、".join(f"[S{ref}]" for ref in point.evidence_ids))
+                    else:
+                        st.caption("模型通用知识补充（无直接课件引用）")
+            else:
+                st.markdown(answer.answer)
+            if answer.citations:
+                st.caption("引用：" + "、".join(f"[S{ref}]" for ref in answer.citations))
+            elif answer.insufficient:
+                st.caption("模型标记：证据不足/需补充。")
+            if getattr(answer, "fact_flags", ()):
+                for flag in answer.fact_flags:
+                    st.warning(flag)
+        with st.expander("参考课件与证据", expanded=False):
+            if not solution.evidence:
+                st.info("没有检索到本地课件证据；答案中的通用知识部分不能当作课件依据。")
+            for item in solution.evidence:
+                kind_label = {"theory": "理论依据", "similar_case": "类似案例（仅类比）",
+                              "background": "背景补充"}.get(item.kind, item.kind)
+                st.markdown(f"**[S{item.ref}] {item.hit.citation}｜{item.hit.review_label}｜{kind_label}**")
+                st.caption(f"关联设问：{'、'.join(map(str, item.questions))}")
+                if len(getattr(item, "sources", ())) > 1:
+                    st.caption("合并来源：" + "；".join(
+                        f"{h.page.filename} 第{h.page.page_number}页" for h in item.sources[1:]
+                    ))
+                if getattr(item, "score_breakdown", None):
+                    st.caption("可解释评分：" + "｜".join(
+                        f"{k}={v}" for k, v in item.score_breakdown.items()
+                    ))
+                st.text(item.text)
+        with st.expander("案例、设问与模型诊断", expanded=False):
+            st.caption("案例原文")
+            st.text(solution.case_text)
+            st.caption("设问顺序")
+            for question in solution.questions:
+                st.write(f"{question.number}. {question.text}")
+            for answer in solution.answers:
+                st.caption(f"设问{answer.index} 的事实边界")
+                if answer.known_facts_used:
+                    st.write("已知事实：" + "；".join(answer.known_facts_used))
+                if answer.inferences:
+                    st.write("合理推断：" + "；".join(answer.inferences))
+                if answer.unknowns:
+                    st.write("需进一步核实：" + "；".join(answer.unknowns))
+                if answer.fact_flags:
+                    st.warning("；".join(answer.fact_flags))
+            if solution.raw_model_output:
+                st.caption("模型原始输出（截断）")
+                st.code(solution.raw_model_output, language=None, wrap_lines=True)
+            if solution.usage:
+                st.caption(f"API token 用量：{solution.usage}")
+            if getattr(solution, "api_http_status", None):
+                st.caption(f"HTTP 状态：{solution.api_http_status}")
+            if getattr(solution, "api_outcome", ""):
+                st.caption(f"API 结果类型：{solution.api_outcome}")
+        full = case_answer_markdown(solution)
+        with st.expander("复制完整案例分析答案", expanded=False):
+            st.code(full, language=None, wrap_lines=True)
+            st.download_button("下载案例分析答案", full, file_name="工程伦理案例分析.txt",
+                               mime="text/plain", on_click="ignore")
+    else:
+        if solution.evidence:
+            with st.expander("本次检索证据（未生成答案）", expanded=True):
+                for item in solution.evidence:
+                    kind_label = {"theory": "理论依据", "similar_case": "类似案例（仅类比）",
+                                  "background": "背景补充"}.get(item.kind, item.kind)
+                    st.markdown(f"**[S{item.ref}] {item.hit.citation}｜{item.hit.review_label}｜{kind_label}**")
+                    if len(getattr(item, "sources", ())) > 1:
+                        st.caption("合并来源：" + "；".join(
+                            f"{h.page.filename} 第{h.page.page_number}页" for h in item.sources[1:]
+                        ))
+                    st.text(item.text)
+        if solution.raw_model_output:
+            with st.expander("模型原始输出（诊断，截断）", expanded=False):
+                st.code(solution.raw_model_output, language=None, wrap_lines=True)
+        if solution.api_outcome:
+            st.caption(f"API 结果类型：{solution.api_outcome}")
+        if solution.usage:
+            st.caption(f"API token 用量：{solution.usage}")
+        if getattr(solution, "api_http_status", None):
+            st.caption(f"HTTP 状态：{solution.api_http_status}")
+
+
+def render_case_tab(retriever, settings, allow_api: bool) -> None:
+    st.caption("上传多张案例截图或粘贴文字；先确认设问，再一次提交生成全部答案。OCR 不自动提交。")
+    for key, default in (("case_uploader_epoch", 0), ("case_uploaded_hashes", []),
+                         ("case_questions_dirty", False), ("case_questions_text", ""), ("case_text", "")):
+        st.session_state.setdefault(key, default)
+    epoch = st.session_state.get("case_uploader_epoch", 0)
+    files = st.file_uploader(
+        "上传案例截图（可多张，按顺序）",
+        type=["png", "jpg", "jpeg"],
+        accept_multiple_files=True,
+        key=f"case_file_uploader_{epoch}",
+        help="按截图顺序 OCR，只填入案例文本，不会自动提交或调用 DeepSeek。",
+    )
+    new_count, ocr_errors = (0, [])
+    if files:
+        with st.spinner("正在按顺序识别案例截图…"):
+            new_count, ocr_errors = process_case_uploads(files, st.session_state)
+    if new_count:
+        st.success(f"已识别并合并 {new_count} 张截图；请核对文字和设问。")
+    for error in ocr_errors:
+        st.warning(f"截图识别提示：{error}；已保留其他已识别内容。")
+
+    case_text = st.text_area(
+        "案例文字（可修改、补充；支持多张截图合并）",
+        height=240,
+        key="case_text",
+        placeholder="粘贴案例背景、事件经过和设问；也可上传多张截图后核对。",
+    )
+    parsed = parse_case_questions(case_text) if case_text.strip() else None
+    # 新截图/首次进入时只更新未被用户编辑的设问；手动编辑后不静默覆盖。
+    if (not st.session_state.get("case_questions_text", "").strip()
+            and not st.session_state.get("case_questions_dirty", False)
+            and parsed and parsed.questions):
+        st.session_state["case_questions_text"] = "\n".join(q.text for q in parsed.questions)
+        st.session_state["case_questions_dirty"] = False
+    elif new_count and not st.session_state.get("case_questions_dirty", False) and parsed and parsed.questions:
+        st.session_state["case_questions_text"] = "\n".join(q.text for q in parsed.questions)
+        st.session_state["case_questions_dirty"] = False
+    questions_text = st.text_area(
+        "识别到的设问（每行一个；可修改、增加、删除、拆分或合并）",
+        height=150,
+        key="case_questions_text",
+        on_change=_mark_case_questions_dirty,
+    )
+    questions = questions_from_editable_lines(questions_text)
+    st.caption(f"当前设问数量：{len(questions)}")
+    if parsed and parsed.warnings:
+        for warning in parsed.warnings:
+            st.warning(warning)
+    if parsed and parsed.uncertain:
+        st.warning("自动识别可能不完整，请确认每个设问后提交。")
+    if new_count and st.session_state.get("case_questions_dirty", False):
+        st.info("已有手动编辑的设问，新增截图未覆盖设问；如需要可点击下方“重新识别设问”。")
+    st.button("重新识别设问", type="secondary", use_container_width=True,
+              key="btn_reparse_case", on_click=_refresh_case_questions)
+    submitted = st.button("提交案例分析", type="primary", use_container_width=True,
+                          key="btn_solve_case")
+    st.button("清空案例", type="secondary", use_container_width=True,
+              key="btn_clear_case", on_click=_clear_case_state)
+    if submitted:
+        if not case_text.strip():
+            st.warning("请先输入案例或上传截图。")
+        elif not questions:
+            st.warning("未识别到设问，请在上方每行填写一个设问后再提交。")
+        else:
+            with st.spinner("正在逐问检索 PPT，并生成全部设问答案…"):
+                solution = solve_case(
+                    case_text, questions,
+                    retriever=retriever, settings=settings, allow_api=allow_api,
+                )
+            st.session_state["last_case_solution"] = solution
+            st.rerun()
+    last_solution = st.session_state.get("last_case_solution")
+    if last_solution is not None:
+        st.divider()
+        render_case_solution(last_solution)
+
+
+def _clear_choice_state() -> None:
+    """「清空」按钮的 on_click 回调：在组件实例化之前清理所有相关状态。"""
+    st.session_state["choice_unified_text_area"] = ""
+    st.session_state.pop("last_choice_solution", None)
+    st.session_state.pop("last_uploaded_file_sig", None)
+    # 递增 epoch，使 file_uploader key 变化，Streamlit 将其视为全新组件
+    st.session_state["choice_uploader_epoch"] = (
+        st.session_state.get("choice_uploader_epoch", 0) + 1
+    )
+
+
+def render_choice_tab(retriever, settings, allow_api: bool) -> None:
+    st.caption("上传题目截图或直接输入题目文字；优先匹配题库已核实答案，未命中时检索课件并调用 DeepSeek 推断。")
+
+    # 确保各 session_state 键存在（首次进入或清空后）
+    if "choice_unified_text_area" not in st.session_state:
+        st.session_state["choice_unified_text_area"] = ""
+    if "choice_uploader_epoch" not in st.session_state:
+        st.session_state["choice_uploader_epoch"] = 0
+
+    # 1. 上传入口：用 epoch 作为 key 后缀，清空时 epoch 递增即可重置组件
+    epoch = st.session_state["choice_uploader_epoch"]
+    up_file = st.file_uploader(
+        "📁 上传题目截图",
+        type=["png", "jpg", "jpeg"],
+        key=f"choice_file_uploader_{epoch}",
+    )
+
+    # 处理图片上传与自动 OCR 回填
+    if up_file is not None:
+        file_bytes = up_file.getvalue()
+        file_sig = hashlib.sha256(file_bytes).hexdigest()
+        if st.session_state.get("last_uploaded_file_sig") != file_sig:
+            st.session_state["last_uploaded_file_sig"] = file_sig
+            with st.spinner("正在使用本地 Vision OCR 识别截图文字…"):
+                ocr_res = recognize_image(file_bytes)
+                if ocr_res.status == "ok" and ocr_res.text.strip():
+                    st.session_state["choice_unified_text_area"] = ocr_res.text
+                    st.success("✅ 题目识别完成，文字已自动填入下方文本框。请核对并按需修改。")
+                else:
+                    st.warning(f"⚠️ 图片文字识别提示：{ocr_res.error or '未识别到有效文字'}。请在下方直接输入。")
+    else:
+        st.session_state.pop("last_uploaded_file_sig", None)
+
+    # 2. 题型：默认自动判断；明确题型由用户/题干优先。
+    question_type = st.selectbox(
+        "题型",
+        options=("自动判断", "单选", "多选"),
+        index=0,
+        key="choice_question_type",
+        help="默认自动判断；若题干已标注单选/多选，会自动遵循题干。",
+    )
+
+    # 3. 唯一的可编辑文本框
+    raw_input = st.text_area(
+        "题目文字（可直接粘贴或修改上方识别出的文字，需包含题干和选项）",
+        height=140,
+        placeholder="例如：\n处理工程与人关系的基本原则是：\nA. 社会公正\nB. 人道主义\nC. 人与自然和谐发展\nD. 人与环境和谐相处",
+        key="choice_unified_text_area",
+    )
+
+    # 4. 按钮行：「搜索并解答」+「清空」并排，on_click 在渲染前修改状态
+    search_clicked = st.button(
+        "🚀 搜索并解答", type="primary", use_container_width=True,
+        key="btn_solve_choice_unified",
+    )
+    st.button(
+        "🗑️ 清空", type="secondary", use_container_width=True,
+        key="btn_clear_choice",
+        on_click=_clear_choice_state,
+    )
+
+    if search_clicked:
+        text_to_solve = raw_input.strip()
+        if not text_to_solve:
+            st.warning("请输入或上传题目内容。")
+        else:
+            with st.spinner("正在检索题库与课件并分析答案…"):
+                solution = solve_choice_raw_text(
+                    raw_text=text_to_solve,
+                    question_type=question_type,
+                    retriever=retriever,
+                    settings=settings,
+                    allow_api=allow_api,
+                )
+            st.session_state["last_choice_solution"] = solution
+            st.rerun()
+
+    # 4. 答案展示区域
+    last_solution = st.session_state.get("last_choice_solution")
+    if last_solution is not None:
+        st.divider()
+        render_choice_solution(last_solution)
+
 def main() -> None:
     st.set_page_config(
         page_title="工程伦理 RAG 复习助手",
@@ -376,9 +888,12 @@ def main() -> None:
         layout="wide",
     )
     st.markdown(MOBILE_CSS, unsafe_allow_html=True)
+    if reset_release_session(st.session_state):
+        # 只失效本项目知识库运行时，不重置额度或其他应用缓存。
+        getattr(load_runtime, 'clear', lambda: None)()
     st.title("📚 工程伦理 RAG 复习助手")
     st.caption(
-        "本地课件检索 · 严格/扩展双范围 · 回答附 PDF 文件名与物理页码 · "
+        "本地 PPT/教材/题库检索 · 混合/本地两种模式 · 回答附来源与物理页码 · "
         "未审核内容会明确标注"
     )
 
@@ -408,13 +923,14 @@ def main() -> None:
         st.header("回答模式")
         qa_mode = st.radio(
             "回答模式",
-            options=(QA_MODE_HYBRID, QA_MODE_RAG, QA_MODE_GENERAL),
-            format_func=lambda value: QA_MODE_LABELS.get(value, value),
+            options=(QA_MODE_HYBRID, QA_MODE_LOCAL),
+            format_func=lambda value: (
+                "混合模式（默认）" if value == QA_MODE_HYBRID else "本地模式（仅检索）"
+            ),
             index=0,
             captions=(
-                "默认：严格课件 → 扩展课件 → DeepSeek 通用知识；来源分开标注。",
-                "只用 A 类与已修复 B 类严格合格页；证据不足返回资料不足。",
-                "直接调用 DeepSeek 通用知识，不使用课件证据。",
+                "先检索本地材料；有依据时交给 DeepSeek 组织，材料不足时允许通用补充。",
+                "只检索本地知识库；不调用 DeepSeek，展示证据、来源文件与物理页码。",
             ),
             label_visibility="collapsed",
         )
@@ -472,18 +988,16 @@ def main() -> None:
             st.caption('AI已关闭：仅使用离线原文摘录。')
         # 网页开关只在本会话有效；总开关/预算/密钥任一不满足都不能调用。
         effective_ai=bool(api_available and ai_enabled)
+        if qa_mode == QA_MODE_LOCAL:
+            effective_ai = False
         settings=replace(settings,api_enabled=effective_ai)
         provider,allow_api=select_answer_provider(effective_ai)
-        if qa_mode == QA_MODE_GENERAL and not effective_ai:
-            st.warning('DeepSeek 通用问答需要开启 API 总开关并打开 AI；当前不能调用，也不会用本地知识伪造答案。')
-        elif qa_mode == QA_MODE_HYBRID and not effective_ai:
-            st.caption('AI未开启：混合模式只使用课件；课件不足时返回资料不足，不生成通用知识。')
+        if qa_mode == QA_MODE_LOCAL:
+            st.caption('本地模式：仅检索本地知识库，不调用 DeepSeek。')
+        elif not effective_ai:
+            st.caption('AI未开启：混合模式只使用本地材料；材料不足时不做模型补充。')
 
         st.divider()
-        if st.button("清空当前结果", width="stretch"):
-            st.session_state.pop("last_answer", None)
-            st.rerun()
-
         with st.expander("审核类别统计"):
             rows = [
                 {
@@ -494,50 +1008,92 @@ def main() -> None:
             ]
             st.dataframe(rows, hide_index=True, width="stretch")
 
-        st.caption("原始 PDF 与 processed_v3 JSON 只读，不会被界面修改。")
+        st.caption("旧版607页/新版193页分别检索；新版全部待审核。两套PDF和处理结果均只读。")
 
-    st.caption('在下方输入题目并提交；回答模式、AI开关与预算设置在侧栏。')
-    st.subheader('输入考试题目')
-    engine = AnswerEngine(retriever, settings=settings)
-    with st.form("question_form", clear_on_submit=False):
-        question = st.text_area(
-            "输入你的问题",
-            height=120,
-            placeholder="例如：工程风险的技术因素有哪些？",
-            key="question_input",
-        )
-        submitted = st.form_submit_button(
-            "检索并回答",
-            type="primary",
-            width="stretch",
-        )
-
-    if submitted:
-        if not question.strip():
-            st.warning("请输入问题。")
-        else:
-            with st.spinner("正在检索课件并整理证据…"):
-                answer = engine.answer(
-                    question,
-                    mode=MODE_STRICT,
-                    top_k=top_k,
-                    provider=provider,
-                    allow_api=allow_api,
-                    qa_mode=qa_mode,
-                )
-            st.session_state["last_answer"] = answer
-            remember_api_diagnostic(st.session_state, answer)
-            # AI开关跨问题保持；只有提交表单才请求，刷新/复制/下载不请求。
-            st.rerun()
-
-    last_answer = st.session_state.get("last_answer")
-    if last_answer is not None:
-        st.divider()
-        render_answer(last_answer)
+    from contextlib import nullcontext
+    if hasattr(st, 'tabs'):
+        tab_qa, tab_choice, tab_case = st.tabs(["📝 简答题问答", "🔘 选择题答题", "🧩 案例分析题"])
+        with tab_choice:
+            st.caption('选择题固定使用混合模式：本地题库/课件优先，材料不足时由 DeepSeek 独立推理。')
+            render_choice_tab(retriever, settings, allow_api)
+        with tab_case:
+            st.caption('案例分析题：默认混合模式，逐问检索老师 PPT；一次提交最多一次 DeepSeek 调用。')
+            render_case_tab(retriever, settings, allow_api)
+        qa_container = tab_qa
     else:
-        st.info("输入问题后点击“检索并回答”。课件答案保留来源文件名和物理页码。")
-    with st.expander('示例问题', expanded=False):
-        st.markdown('\n'.join(f'- {question}' for question in EXAMPLES))
+        qa_container = nullcontext()
+
+    with qa_container:
+        st.caption('输入或上传题目，确认文字后点击“检索并回答”；回答模式、AI开关与预算设置在侧栏。')
+        st.subheader('输入考试题目')
+        engine = AnswerEngine(retriever, settings=settings)
+        if "qa_uploader_epoch" not in st.session_state:
+            st.session_state["qa_uploader_epoch"] = 0
+        qa_epoch = st.session_state["qa_uploader_epoch"]
+        if hasattr(st, "file_uploader"):
+            qa_file = st.file_uploader(
+                "上传题目截图（可选，PNG/JPG/JPEG）",
+                type=["png", "jpg", "jpeg"],
+                key=f"qa_file_uploader_{qa_epoch}",
+                help="只做本地 OCR 文字提取，不会自动提交或调用 DeepSeek。",
+            )
+        else:
+            qa_file = None
+        if qa_file is not None:
+            with st.spinner("正在识别题目截图…"):
+                qa_upload_status, qa_upload_message = process_qa_upload(qa_file, st.session_state)
+        else:
+            qa_upload_status, qa_upload_message = process_qa_upload(qa_file, st.session_state)
+        if qa_upload_status == "success":
+            st.success(qa_upload_message)
+        elif qa_upload_status == "error":
+            st.warning(qa_upload_message)
+        with st.form("question_form", clear_on_submit=False):
+            question = st.text_area(
+                "输入你的问题",
+                height=120,
+                placeholder="例如：工程风险的技术因素有哪些？",
+                key="question_input",
+            )
+            submitted = st.form_submit_button(
+                "检索并回答",
+                type="primary",
+                width="stretch",
+            )
+        st.button(
+            "清空题目",
+            type="secondary",
+            use_container_width=True,
+            key="btn_clear_qa",
+            on_click=_clear_qa_state,
+        )
+
+        if submitted:
+            if not question.strip():
+                st.warning("请输入问题。")
+            else:
+                with st.spinner("正在检索本地材料并生成答案…"):
+                    answer = engine.answer(
+                        question,
+                        mode=MODE_STRICT,
+                        top_k=top_k,
+                        provider=provider,
+                        allow_api=allow_api,
+                        qa_mode=qa_mode,
+                    )
+                st.session_state["last_answer"] = answer
+                remember_api_diagnostic(st.session_state, answer)
+                # AI开关跨问题保持；只有提交表单才请求，刷新/复制/下载不请求。
+                st.rerun()
+
+        last_answer = st.session_state.get("last_answer")
+        if last_answer is not None:
+            st.divider()
+            render_answer(last_answer)
+        else:
+            st.info("输入问题后点击“检索并回答”。课件答案保留来源文件名和物理页码。")
+        with st.expander('示例问题', expanded=False):
+            st.markdown('\n'.join(f'- {question}' for question in EXAMPLES))
 
 
 if __name__ == "__main__":

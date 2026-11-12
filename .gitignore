@@ -20,6 +20,18 @@ __pycache__/
 /data/processed_v2/
 /data/processed_v3/
 /data/pdfs/
+/data/pdfs_new/
+/data/quiz_bank/
+/data/textbooks/
+/data/textbook_kb/
+/reports/textbook_scan_*/
+/reports/textbook_kb_phase2_*/
+/reports/textbook_kb_acceptance_*/
+/reports/retrieval_phase3_*/
+/reports/quiz_bank_import_*/
+/data/processed_exam_2026/
+/data/versions/
+/reports/dual_version_acceptance/local_results*.json
 /data/ocr_candidates/
 /data/runtime/
 
@@ -54,3 +66,4 @@ qdrant_storage/
 # 本地模型与检索向量缓存
 /models/
 /data/retrieval_cache/
+/reports/phase4_integration/backup_path.txt

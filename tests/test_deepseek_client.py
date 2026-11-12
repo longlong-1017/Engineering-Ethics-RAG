@@ -115,8 +115,9 @@ def test_empty_choices_is_reported():
 def test_empty_content_is_reported():
     response = FakeResponse(payload={"choices": [{"message": {"content": "  "}}]})
     client = DeepSeekClient(_settings(), session=FakeSession(response=response))
-    with pytest.raises(DeepSeekError, match="空回答"):
+    with pytest.raises(DeepSeekError, match="空回答") as exc:
         client.chat([{"role": "user", "content": "问题"}], allow_api=True)
+    assert exc.value.code == "empty_response"
 
 
 @pytest.fixture(autouse=True)

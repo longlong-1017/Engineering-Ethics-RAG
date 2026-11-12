@@ -134,7 +134,8 @@ def test_render_keeps_full_answer_and_supplements_collapsed_and_risk_visible(ui)
     warning = next(i for i, (kind, text, scope) in enumerate(records)
                    if kind == 'warning' and '来源未人工复核' in text and not scope)
     heading = records.index(('subheader', '笔试精简答案', ()))
-    assert warning < heading
+    # 最终答案优先展示；风险提示可以随后出现。
+    assert heading < warning
     for ref, filename, page in app.compact_exam_answer(result)['sources']:
         assert ('markdown', f'[{ref}] {filename}｜物理第{page}页', ()) in records
 

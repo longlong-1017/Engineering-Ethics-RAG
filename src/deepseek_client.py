@@ -113,12 +113,22 @@ class DeepSeekClient:
             if not isinstance(choices,list) or not choices:
                 raise DeepSeekError('DeepSeek API未返回任何回答',code='invalid_response',attempted=True,quota_consumed=True)
             first=choices[0] if isinstance(choices[0],dict) else {}
-            if first.get('finish_reason') not in (None,'stop'):
-                raise DeepSeekError('DeepSeek回答被截断或未正常结束，拒绝不完整答案。',code='invalid_response',attempted=True,quota_consumed=True)
+            finish_reason = first.get('finish_reason')
+            if finish_reason == 'length':
+                raise DeepSeekError(
+                    'DeepSeek 输出达到 max_tokens 上限（finish_reason=length），回答被截断；'
+                    '未采用不完整答案，不自动重试。',
+                    code='output_truncated', attempted=True, quota_consumed=True,
+                )
+            if finish_reason not in (None, 'stop'):
+                raise DeepSeekError(
+                    f'DeepSeek 未正常结束（finish_reason={finish_reason}），拒绝不完整答案；不自动重试。',
+                    code='finish_reason', attempted=True, quota_consumed=True,
+                )
             message=first.get('message')
             content=message.get('content') if isinstance(message,dict) else None
             if not isinstance(content,str) or not content.strip():
-                raise DeepSeekError('DeepSeek API返回了空回答',code='invalid_response',attempted=True,quota_consumed=True)
+                raise DeepSeekError('DeepSeek API返回了空回答',code='empty_response',attempted=True,quota_consumed=True)
         except DeepSeekError as exc:
             exc.usage=usage
             exc.accounting=self._settle(ticket,usage)

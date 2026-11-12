@@ -58,6 +58,18 @@ class Page:
     review_basis: str = ""
     warnings: tuple[str, ...] = ()
     source_file: str = ""
+    dataset_version: str = "old"
+    versioned_source: bool = False
+
+    @property
+    def version_label(self) -> str:
+        if self.dataset_version == "exam_2026":
+            return "新版·当前考试"
+        if self.dataset_version == "textbook":
+            return "教材"
+        if self.dataset_version == "quiz":
+            return "题库"
+        return "旧版·补充"
 
     @property
     def reviewed(self) -> bool:
@@ -110,7 +122,8 @@ class Page:
 
     @property
     def citation(self) -> str:
-        return f"《{self.filename}》第 {self.page_number} 页"
+        prefix = f"【{self.version_label}】" if self.versioned_source else ""
+        return f"{prefix}《{self.filename}》第 {self.page_number} 页"
 
     @property
     def document_stem(self) -> str:
@@ -119,6 +132,8 @@ class Page:
     def to_dict(self) -> dict[str, Any]:
         return {
             "document_id": self.document_id,
+            "dataset_version": self.dataset_version,
+            "version_label": self.version_label,
             "filename": self.filename,
             "page_number": self.page_number,
             "text": self.text,

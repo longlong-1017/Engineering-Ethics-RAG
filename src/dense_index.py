@@ -11,7 +11,8 @@ from pathlib import Path
 
 
 def page_id(page):
-    return f'{page.document_id}:{page.filename}:{page.page_number}'
+    prefix = '' if getattr(page, 'dataset_version', 'old') == 'old' else page.dataset_version + ':'
+    return f'{prefix}{page.document_id}:{page.filename}:{page.page_number}'
 
 
 class DenseIndex:
@@ -70,6 +71,29 @@ class DenseIndex:
             score=sum(a*b for a,b in zip(q,v))
             if score>0:scores.append((key,score))
         return sorted(scores,key=lambda x:(-x[1],x[0]))[:top_k]
+
+    @classmethod
+    def from_cache(cls, pages, encoder, model_id, cache_path):
+        """运行时只读；缺失、损坏或文本不匹配即拒绝，交给上层退回BM25。"""
+        path = Path(cache_path).resolve()
+        if not path.is_file():
+            raise FileNotFoundError(path.name)
+        obj = cls.__new__(cls)
+        obj.pages = {page_id(p): p for p in pages}
+        obj.encoder, obj.model_id, obj.cache_path = encoder, model_id, str(path)
+        obj.vectors = {}
+        with sqlite3.connect(path.as_uri() + '?mode=ro', uri=True) as db:
+            for key, page in obj.pages.items():
+                digest = hashlib.sha256(page.text.encode('utf-8')).hexdigest()
+                row = db.execute('SELECT vector FROM vectors WHERE model=? AND id=? AND hash=?',
+                                 (model_id, key, digest)).fetchone()
+                if row is None:
+                    raise ValueError('向量缺失或文本哈希不匹配')
+                obj.vectors[key] = cls._normalize(json.loads(row[0]))
+        if len({len(v) for v in obj.vectors.values()}) > 1:
+            raise ValueError('缓存维度不一致')
+        obj.cache_hits, obj.encoded_pages = len(obj.vectors), 0
+        return obj
 
 
 def load_project_dense(corpus):
